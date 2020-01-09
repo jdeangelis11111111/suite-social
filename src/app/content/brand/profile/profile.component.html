@@ -1,0 +1,134 @@
+<mat-card>
+  <div id="companysurveymodal" lass="wt-100">
+
+    <div class="modal-header">
+      <h4 class="modal-title">Brand Profile</h4>
+    </div>
+    <div class="modal-body">
+      <button type="submit" class="btn btn-set" data-dismiss="modal" (click)="updateSurvey()">Update</button>
+      <div class="companyform">
+        <form name="brandSurveyForm" [formGroup]="brandSurveyForm">
+
+          <mat-form-field>
+            <label>1. Name<span style="color: red;">*</span></label>
+            <input matInput formControlName="name" maxlength="50">
+            <mat-error *ngIf="brandSurveyForm.get('name').hasError('required')">
+              Name is required
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field>
+            <label>2. Company's name <span style="color: red;">*</span></label>
+            <input matInput formControlName="cName" maxlength="50">
+            <mat-error *ngIf="brandSurveyForm.get('cName').hasError('required')">
+              Company name is required
+            </mat-error>
+          </mat-form-field>
+          <div class="external-labels">
+            <label>3.Product category you are trying to promote</label>
+            <label *ngFor="let mc of opts" class="inner-labels">
+              <!-- formControlName="topic" -->
+              <input type="radio" [value]="mc" formControlName="categPro">
+              {{mc}}
+              <input *ngIf="mc == 'Others'" type="text" formControlName="categProO"><!-- formControlName="categPro" -->
+            </label>
+            <!--  <label>3. Which product category you are trying to promote?
+                        </label>
+                        <div class="set-label">
+                          <label *ngFor="let mc of opts">
+                            <input type="radio" [value]="mc" formControlName="categPro">
+                            {{mc}}
+                          </label> -->
+            <!-- </div> -->
+          </div>
+          <mat-form-field>
+            <label>4. Overall budget </label>
+            <input matInput (keypress)=_keyPressDec($event) formControlName="budget">
+
+          </mat-form-field>
+
+          <mat-form-field>
+            <label>5. Number of influencers you like to hire</label>
+            <input matInput (keypress)=_keyPressDec($event) formControlName="hireInf">
+
+          </mat-form-field>
+
+          <mat-form-field>
+            <label>6. Describe your brand or product in one sentence</label>
+            <input matInput formControlName="desc">
+
+          </mat-form-field>
+          <!-- <mat-form-field> -->
+          <div class="external-labels">
+            <label>7. Ages you are targeting for the campaign</label>
+            <label *ngFor="let age of ages;" class="inner-labels">
+              <input type="radio" [value]="age.value" formControlName="age">
+              {{age.viewValue}}
+            </label>
+          </div>
+          <!-- </mat-form-field> -->
+          <!-- <mat-form-field> -->
+          <div class="external-labels">
+            <label>8. Social media platforms you are targeting</label>
+            <label *ngFor="let plat of platforms" class="inner-labels">
+              <input type="radio" [value]="plat" formControlName="platform">
+              {{plat}}
+              <input *ngIf="plat == 'Others'" type="text" formControlName="platformO">
+              <!-- formControlName="platform" -->
+            </label>
+          </div>
+          <!-- </mat-form-field> -->
+
+          <mat-form-field>
+            <label>9. Campaign timeline (i.e. November 1 - November 25, 2019)</label>
+            <input matInput formControlName="timeline">
+          </mat-form-field>
+
+
+          <!-- <mat-form-field>
+                <label>10. What is your email?<span style="color: red;">*</span></label>
+                <input matInput formControlName="email" maxlength="50">
+                <mat-error *ngIf="brandSurveyForm.get('email').hasError('required')">
+                  Email is required
+                </mat-error>
+                <mat-error *ngIf="brandSurveyForm.get('email').hasError('email')">
+                  Please enter a valid email address
+                </mat-error>
+              </mat-form-field> -->
+
+          <mat-form-field>
+            <label>10. Mobile number<span style="color: red;">*</span></label>
+            <input matInput formControlName="mobile" minlength="9" maxlength="15" (keypress)=_keyPressDec($event)>
+
+            <mat-error *ngIf="brandSurveyForm.get('mobile').hasError('required')">
+              It is required.
+            </mat-error>
+            <mat-error *ngIf="brandSurveyForm.get('mobile').hasError('pattern')">
+              It is not a valid mobile number.
+            </mat-error>
+            <mat-error *ngIf="brandSurveyForm.get('mobile').hasError('minlength')">
+              Please enter atleast 9 digit mobile number.
+            </mat-error>
+          </mat-form-field>
+
+          <!-- <mat-form-field> -->
+          <div class="external-labels">
+            <label>11. Preferred method of communication</label>
+            <label *ngFor="let com of coms" class="inner-labels">
+              <input type="radio" [value]="com" formControlName="communicate">
+              {{com}}
+            </label>
+          </div>
+          <!-- </mat-form-field> -->
+          <!-- <div class="form-group form-check"> -->
+          <div class="external-labels">
+            <label><input type="checkbox" formControlName="copy"> Send me a copy of my
+              responses.</label>
+          </div>
+          <!-- </div> -->
+        </form>
+      </div>
+    </div>
+
+  </div>
+</mat-card>

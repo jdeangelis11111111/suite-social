@@ -1,0 +1,48 @@
+<!-- <div class="bckGrd">
+  <div class="bckBtn">
+   
+  </div>
+  <div class="sclPge">
+    <div class="logo text-center"><img src="assets/image/logo01.png" /></div>
+  </div>
+  <div class="hmpge"><div><h2>Home Page</h2><br><h4>Under Development</h4></div></div>
+</div> -->
+
+<div id="wrapper">
+  <div class="login-form">
+    <div class="get-the-app">
+      <div class="login">
+        <div class="outer-circle01"></div>
+        <div class="outer-circle03"></div>
+        <div class="outer-circle04"></div>
+        <div class="socialError">
+          <img src="assets/image/logo01.png" />
+          <h2 *ngIf="socialLoginType == 'facebook'">
+            <p><i class="fab fa-facebook"></i></p>
+            Facebook
+          </h2>
+          <h2 *ngIf="socialLoginType == 'google'">
+            <p><i class="fab fa-google"></i></p>
+            Google
+          </h2>
+          <h2 *ngIf="socialLoginType == 'instagram'">
+            <p><i class="fab fa-instagram"></i></p>
+            Instagram
+          </h2>
+          <h2 *ngIf="socialLoginType == 'twitter'">
+            <p><i class="fab fa-twitter"></i></p>
+            Twitter
+          </h2>
+          <h2 *ngIf="socialLoginType == 'youtube'">
+            <p><i class="fab fa-youtube"></i></p>
+            Youtube
+          </h2>
+          <h4>Under Development</h4>
+          <button class="buton" routerLink="/login">
+            <i class="fa fa-arrow-left"></i> Back To Login
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

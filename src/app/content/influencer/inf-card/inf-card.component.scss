@@ -1,0 +1,239 @@
+#influencersurveymodal{
+  display: block;
+}
+.fade{
+  opacity: 1;
+}
+#influencersurveymodal, #mainDiv{
+  margin: -24px;
+}
+#influencersurveymodal label {
+font-weight: normal;
+}
+.modal.fade  {
+  transform: translate(0, 0%);
+}
+
+#influencersurveymodal  {
+  max-width: 850px;
+}
+#influencersurveymodal  .modal-content {
+  border: 1px solid rgba(255,255,255,0.2);
+}
+#influencersurveymodal  .modal-header {
+  background: #EA3441 !important;
+  color: #fff;
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+#influencersurveymodal  .modal-header h4 {
+  font-size: 22px;
+  line-height: 22px;
+  margin: 0 0 5px;
+}
+#influencersurveymodal  .modal-header button {
+  color: #fff;
+  font-size: 20px;
+  padding-top: 0.5rem;
+}
+#influencersurveymodal  .modal-body {
+  font-size: 16px;
+  min-height: 0;
+  // max-height: 450px;
+  // overflow-y: auto;
+}
+.head-link {
+  text-align: center;
+  margin: 10px 0;
+  font-size: 13px;
+  line-height: 21px;
+}
+.head-link a {
+  color: #EA3441;
+}
+.companyform .form-group {
+  padding: 0 6px;
+  margin: 0 0 15px;;
+}
+.companyform .form-group label {
+  display: block;
+  font-weight: normal;
+  margin: 0;
+}
+.companyform .form-group input[type="text"] {
+  border: none;
+  padding: 0 10px;
+  border-bottom: 1px solid #eaeaea;
+  box-shadow: none;
+  font-size: 13px;
+}
+.companyform .form-group textarea {
+  height: 100px;
+}
+.set-label label {
+  padding: 5px 0;
+}
+.set-label label input {
+  float: left;
+  margin: 6px 10px 0 0;
+}
+.set-input {
+  display: flex !important;
+  align-items: center;
+}
+.set-label label {
+  cursor: pointer;
+}
+.set-input input[type="text"] {
+  margin: 0 0 0 10px !important;
+}
+.set-input span {
+  display: block;
+  width: 300px;
+}
+.btn-set {
+  background: #EA3441;
+  color: #fff;
+  font-size: 14px;
+}
+.companyform .form-group select {
+  font-size: 13px;
+  height: 30px;
+  line-height: 30px;
+  margin: 5px 0 0 0;
+}
+.logoutBtn{
+  float: right;
+    margin: 10px;
+    background: #EA3441;
+    border: none;
+    color: #fff;
+    font-size: 14px;
+    height: 23px;
+    width: 60px;
+    border-radius: 8%;
+}
+.invalid-feedback{
+  display:block;
+}
+  .example-container {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .example-container > * {
+    width: 100%;
+  }
+  .mat-form-field{
+      width:100%;
+  }
+  .external-labels {
+    margin: 10px 0 0 0;
+    display: flex;
+    flex-direction: column;
+  }
+  .external-labels .inner-labels {
+    cursor: pointer;
+  }
+  .imageC {
+    position: fixed;
+    padding: 10px;
+    background: #fff;
+    z-index: 9999;
+    width: 30px;
+    height: 31px !important;
+    border-radius: 50%;
+    cursor: pointer;
+    margin: -8px 0 0 -12px;
+    box-shadow: 0 0 14px -4px #000;
+  }
+  .imageM {
+    position: fixed;
+    padding: 10px;
+    background: #fff;
+    z-index: 9999;
+    width: 30px;
+    height: 31px !important;
+    border-radius: 50%;
+    cursor: pointer;
+    margin: -6px 0 0 -12px;
+    box-shadow: 0 0 14px -4px #000;
+  }
+ .modal-header {
+    background: #EA3441 !important;
+    color: #fff;
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+  }
+ .modal-header h4 {
+    font-size: 22px;
+    line-height: 22px;
+    margin: 0 0 5px;
+  }
+  .formMsg{
+    margin: 11px 11px 0 11px
+  }
+  .sendBtn{
+    background: #ea3441;
+    color: white;
+    float: right;
+    margin-right: 12px;
+  }
+  .emailLabel{
+    display: block;
+      margin-bottom: 15px;
+      font-size: 15px;
+  }
+  .emailLabel span{
+    // color: grey;
+    font-size: 15px;
+  }
+  .rating{
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 5px;
+    display: block !important;
+  }
+  
+  .rating:not(:checked) > input {
+    position:absolute;
+    top:-9999px;
+    clip:rect(0,0,0,0);
+  }
+  
+  .rating:not(:checked) > label {
+    float:right;
+    width:1em;
+    padding:0.1em;
+    overflow:hidden;
+    white-space:nowrap;
+    cursor:pointer;
+    font-size:200%;
+    line-height:1.2;
+    color:#ddd;
+  }
+  
+  .rating:not(:checked) > label:before {
+    content: '★ ';
+  }
+  
+  .rating > input:checked ~ label {
+    color: #f70;
+  }
+  
+  .rating:not(:checked) > label:hover,
+  .rating:not(:checked) > label:hover ~ label {
+    color: gold;
+  }
+  
+  
+  .rating > input:checked ~ label:hover,
+  .rating > input:checked ~ label:hover ~ label,
+  .rating > label:hover ~ input:checked ~ label {
+    color: #ea0;
+  }
+  .textnosize{
+    resize:none !important;
+  }

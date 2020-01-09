@@ -1,0 +1,31 @@
+<mat-card>
+  <div class="main-div">
+    <div class="top-title-head">
+      <div>
+        <mat-icon class="backArrow" [routerLink]="'/content/brand/reqDet'">arrow_back</mat-icon>
+      </div>
+      <div class="title">{{data.campaignTitle}}</div>
+      <div class="timeline">{{data.startDate | date}} - {{data.endDate | date}}</div>
+    </div>
+    <div class="detail-post">
+      <div class="postSlider">
+        <!-- <img src="assets/image/icon_brand.png"> -->
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12 py-3">
+              <ngb-carousel>
+                <ng-template ngbSlide *ngFor="let event of imageAr">
+                  <img class="slide-image" [src]="event" alt="No Image Available">
+                </ng-template>
+              </ngb-carousel>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="description-tab">
+        <div class="description-title">About Campaign</div>
+        <div class="description-details">{{data.aboutCampaigning}}</div>
+      </div>
+    </div>
+  </div>
+</mat-card>

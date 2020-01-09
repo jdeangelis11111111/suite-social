@@ -1,0 +1,705 @@
+<div *ngIf="reset != 'true' && path != 'terms' && path != 'policy'" id="wrapper">
+  <div class="login-form">
+    <div class="show-web-app">
+      <div class="show-inner-app">
+        <div class="container container-slider">
+          <div class="slide-logo"><img src="assets/image/logo01.png"></div>
+          <div id="myCarousel" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+              <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+              <li data-target="#myCarousel" data-slide-to="1"></li>
+              <li data-target="#myCarousel" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner">
+              <div class="item slide01 active"></div>
+              <div class="item slide02"></div>
+              <div class="item slide03"></div>
+            </div>
+            <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+              <span class="glyphicon glyphicon-chevron-left"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control" href="#myCarousel" data-slide="next">
+              <span class="glyphicon glyphicon-chevron-right"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="get-the-app">
+      <div class="login">
+        <div class="outer-circle01"></div>
+        <div class="outer-circle03"></div>
+        <div class="outer-circle04"></div>
+        <div class="logo text-center"><img src="assets/image/logo01.png"></div>
+        <h3 class="text-center">Reset Password</h3>
+        <form name='resetPasswordForm' [formGroup]="resetPasswordForm" (submit)="onResetSubmit()" autocomplete="off"
+          aria-autocomplete="none" novalidate>
+          <div class="form-group">
+            <label>Password</label>
+            <input type="password" name="password" formControlName="password" required="required">
+          </div>
+          <div *ngIf=" b['password'].touched && b['password'].errors" class="invalid-feedback">
+            <div class="text-danger" *ngIf="b['password'].errors.required">
+              Password is required
+            </div>
+            <p class="text-danger" *ngIf="b['password'].errors.pattern">
+              Password should be Alphanumeric Min. 8 characters
+            </p>
+          </div>
+
+          <div class="form-group">
+            <label>Confirm Password</label>
+            <input type="Password" name="passwordConfirm" onKeyDown="if(event.keyCode === 32) return false;"
+              formControlName="passwordConfirm" required="required">
+          </div>
+          <div *ngIf=" b['passwordConfirm'].touched && b['passwordConfirm'].errors" class="invalid-feedback">
+            <div class="text-danger" *ngIf="b['passwordConfirm'].errors.required">
+              Confirm Password is required
+            </div>
+            <p class="text-danger" *ngIf="b['passwordConfirm'].errors.pattern">
+              Confirm Password should be Alphanumeric Min. 8 characters
+            </p>
+            <p class="text-danger" *ngIf="!resetPasswordForm.get('passwordConfirm').hasError('required') &&
+            resetPasswordForm.get('passwordConfirm').hasError('passwordsNotMatching')">
+              Password do not match
+            </p>
+          </div>
+          <button type="submit" [disabled]='resetPasswordForm.invalid'>Submit</button>
+        </form>
+        <div class="create-link text-center">Continue <a style="cursor:pointer" [routerLink]="['/login']">Log In
+            here.</a>
+        </div>
+      </div>
+      <div class="get-app">
+        <a href="javascript: void(0);"><img src="assets/image/google.png" alt="image"></a>
+        <a href="javascript: void(0);"><img src="assets/image/apple.png" alt="image"></a>
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="reset == 'true' && path != 'terms' && path != 'policy'">The link is expired</div>
+<div *ngIf="path == 'terms'">
+  <div class="heading">
+    <h2>SuiteSocial Terms of Use</h2>
+  </div>
+  <div class="main-wrapper">
+    <div class="terms-wrapper">
+      <div class="description">
+        <p>Welcome to <a href="https://shieldcrypt.com:7384/SuiteSocial/#/">SuiteSocial</a>. Please read the following
+          Terms of Use carefully before using this Site so that you are aware
+          of your legal rights and obligations with respect to SuiteSocial. By accessing or using the Site, you
+          expressly acknowledge and agree that you are entering a legal
+          agreement with us and have
+          understood and agree to comply with, and be legally bound by, these Terms of Use, together with the Privacy
+          Policy.You hereby waive any applicable rights to require an original (non-electronic) signature or
+          delivery or retention of non-electronic records, to the extent not prohibited under applicable law. If you do
+          not agree to
+          be bound by these Terms please do not access or use the Site.</p>
+        <ul class="inner-text">
+          <li><b>1.Background. </b>The Site is intended to provide information about SuiteSocial’s products and
+            services.</li>
+          <li><b>2. Modification. </b>We reserve the right, at our discretion, to change these Terms at any time. Such
+            change will be effective ten (10) days following posting of the revised Terms on the Site, and your
+            continued use of the Site thereafter means that you accept those changes.</li>
+          <li><b>3. Ability to Accept Terms. </b>The Site is only intended for individuals aged thirteen (18) years or
+            older. If you are under 18 years please do not visit or use the Site.</li>
+          <li><b>4. Site Access. </b>For such time as these Terms are in effect, we hereby grant you permission to visit
+            and use the Site provided that you comply with these Terms and applicable law.</li>
+          <li><b>5. Restrictions. </b>You shall not: (i) copy, distribute or modify any part of the Site without our
+            prior written authorization; (ii) use, modify, create derivative works of, transfer (by sale, resale,
+            license, sublicense, download or otherwise), reproduce, distribute, display or disclose Content (defined
+            below), except as expressly authorized herein; (iii) disrupt servers or networks connected to the Site; (iv)
+            use or launch any automated system (including without limitation, "robots" and "spiders") to access the
+            Site; and/or (v) circumvent, disable or otherwise interfere with security-related features of the Site or
+            features that prevent or restrict use or copying of any Content or that enforce limitations on use of the
+            Site.</li>
+          <li><b>6. Account. </b>In order to use some of the services of the Site, you may have to create an account
+            ("Account"). You agree not to create an Account for anyone else or use the account of another without their
+            permission. When creating your Account, you must provide accurate and complete information. You are solely
+            responsible for the activity that occurs in your Account, and you must keep your Account password secure.
+            You must notify SuiteSocial immediately of any breach of security or unauthorized use of your Account. As
+            between
+            you and SuiteSocial, you are solely responsible and liable for the activity that occurs in connection with
+            your
+            Account. If you wish to delete your Account you may send an email request to SuiteSocial at <a>info@Social
+              Suite.com.</a>
+          </li>
+          <li><b>7. Payments to SuiteSocial. </b>Except as expressly set forth in the Terms, your general right to
+            access and
+            use the Site is currently for free, but SuiteSocial may in the future charge a fee for certain access or
+            usage.
+            You will not be charged for any such access or use of the Site unless you first agree to such charges, but
+            please be aware that any failure to pay applicable charges may result in you not having access to some or
+            all of the Site.
+          </li>
+          <li><b>8. Intellectual Property Rights.</b>
+            <p class="chang-txt">
+              a. <u>Content and Marks. </u>The (i) content on the Site, including without limitation, the text,
+              documents,
+              articles, brochures, descriptions, products, software, graphics, photos, sounds, videos, interactive
+              features, and services (collectively, the "Materials"), (ii) and User Submissions, as defined below
+              (together with the "Materials", the "Content"), and (iii) the trademarks, service marks and logos
+              contained therein ("Marks"), are the property of SuiteSocial and/or its licensors and may be protected by
+              applicable copyright or other intellectual property laws and treaties. “SuiteSocial”, the SuiteSocial
+              logo, and
+              other marks are Marks of SuiteSocial or its affiliates. All other trademarks, service marks, and logos
+              used on
+              the Site are the trademarks, service marks, or logos of their respective owners. We reserve all rights
+              not expressly granted in and to the Site and the Content.
+            </p>
+            <p class="chang-txt">
+              b. <u>Use of Content. </u>Content on the Site is provided to you for your information and personal use
+              only
+              and may not be used, modified, copied, distributed, transmitted, broadcast, displayed, sold, licensed,
+              de-compiled, or otherwise exploited for any other purposes whatsoever without our prior written consent.
+              If you download or print a copy of the Content you must retain all copyright and other proprietary notices
+              contained therein.
+            </p>
+          </li>
+
+          <li><b>9. User Submissions.</b>
+            <p class="chang-txt">
+              a. <u>Responsibility. </u>The Site may permit the submission, hosting, sharing and publishing of Content
+              by
+              you and other users ("User Submissions"). You understand that whether or not such User Submissions are
+              published, we do not guarantee any confidentiality with respect to any User Submissions. You shall be
+              solely responsible for your User Submissions and the consequences of posting, publishing or uploading
+              them. We have complete discretion whether to publish your User Submissions and we reserve the right in our
+              sole discretion and without further notice to you, to monitor, censor, edit, remove, delete, and/or remove
+              any and all Content posted on the Site (including User Submissions) at any time and for any reason.
+            </p>
+            <p class="chang-txt">
+              b. <u>Ownership. </u>You represent and warrant that you own or have the necessary rights and permissions
+              to
+              use and authorize SuiteSocial to use all Intellectual Property Rights (defined below) in and to your User
+              Submissions, and to enable inclusion and use thereof as contemplated by the Site and these Terms. Unless
+              the User Submissions are separately referred to, all references herein to Content shall include references
+              to User Submissions. "Intellectual Property Rights" means any and all rights, titles and interests,
+              whether foreign or domestic, in and to any and all trade secrets, patents, copyrights, service marks,
+              trademarks, know-how, or similar intellectual property rights, as well as any and all moral rights, rights
+              of privacy, publicity and similar rights of any type under the laws or regulations of any governmental,
+              regulatory, or judicial authority, foreign or domestic. You retain all of your ownership rights in and to
+              your User Submissions.
+            </p>
+            <p class="chang-txt">
+              c. <u>License to User Submissions. </u>By submitting the User Submissions to SuiteSocial, you hereby
+              grant SuiteSocial
+              a worldwide, irrevocable, non-exclusive, royalty-free, perpetual, sublicenseable and transferable license
+              to use, reproduce, distribute, prepare derivative works of, display, and perform the User Submissions in
+              connection with the Site and SuiteSocial's business, including without limitation for publishing and
+              redistributing part or all of your User Submissions (and derivative works thereof) in any media formats
+              and through any media channels and, and you hereby waive any moral rights in your User Submissions, to the
+              extent permitted by law. You also hereby grant each user of the Site or other viewer or user of the User
+              Submission a non-exclusive right to use, reproduce, distribute, prepare derivative works of, display and
+              perform such User Submissions, all in accordance with these Terms.
+
+            </p>
+            <p class="chang-txt">
+              d. <u>Prohibited Content. </u>You agree that you will not display, post, submit, publish, upload or
+              transmit a User Submission that: (i) is unfair or deceptive under the consumer protection laws of any
+              jurisdiction; (ii) is copyrighted, protected by trade secret or otherwise subject to third party
+              proprietary rights, including privacy and publicity rights, unless you are the owner of such rights; (iii)
+              creates a risk to a person’s safety or health, creates a risk to public safety or health, compromises
+              national security, or interferes with an investigation by law enforcement; (iv) impersonates another
+              person; (v) promotes illegal drugs, violates export control laws, relates to illegal gambling, or illegal
+              arms trafficking; (vi) is unlawful, defamatory, libelous, threatening, pornographic, harassing, hateful,
+              racially or ethnically offensive, or encourages conduct that would be considered a criminal offense, gives
+              rise to civil liability, violates any law, or is inappropriate; (vii) involves theft or terrorism; or
+              (viii) is otherwise malicious or fraudulent.
+
+            </p>
+            <p class="chang-txt">
+              e. <u>Exposure. </u>You understand and acknowledge that when accessing and using the Site: (i) you will be
+              exposed to User Submissions from a variety of sources, and that SuiteSocial is not responsible for the
+              accuracy,
+              usefulness, safety, or Intellectual Property Rights of, or relating to, such User Submissions; and (ii)
+              you may be exposed to User Submissions that are inaccurate, offensive, indecent, or objectionable. You
+              hereby agree to waive, and hereby do waive, any legal or equitable rights or remedies you may have against
+              SuiteSocial with respect to (i) and (ii) herein.
+            </p>
+            <p class="chang-txt">
+              f. <u>Spam. </u>You agree not to, and will not, use the communications systems provided by the Site to
+              send
+              unauthorized commercial communications and you shall be solely responsible and liable for any such
+              unauthorized communications.
+            </p>
+          </li>
+          <li><b>10. Information Description. </b> We attempt to be as accurate as possible. However, we cannot and do
+            not warrant that the Content available on the Site is accurate, complete, reliable, current, or error-free.
+            We reserve the right to make changes in or to the Content, or any part thereof, in our sole judgment,
+            without the requirement of giving any notice prior to or after making such changes to the Content. Your use
+            of the Content, or any part thereof, is made solely at your own risk and responsibility.</li>
+
+          <li><b>11. Links.</b>
+            <p class="chang-txt">
+              a. The Site may contain links, and may enable you to post content, to third party websites that are not
+              owned or controlled by SuiteSocial. We are not affiliated with, have no control over, and assume no
+              responsibility for the content, privacy policies, or practices of, any third party websites. You: (i) are
+              solely responsible and liable for your use of and linking to third party websites and any content that you
+              may send or post to a third party website; and (ii) expressly release SuiteSocial from any and all
+              liability
+              arising from your use of any third party website. Accordingly, we encourage you to read the terms and
+              conditions and privacy policy of each third party website that you may choose to visit.
+
+            </p>
+            <p class="chang-txt">
+              b. SuiteSocial permits you to link to the Site provided that: (i) you link to but do not replicate any
+              page on
+              this Site; (ii) the hyperlink text shall accurately describe the Content as it appears on the Site; (iii)
+              you shall not misrepresent your relationship with SuiteSocial or present any false information about
+              SuiteSocial and
+              shall not imply in any way that we are endorsing any services or products, unless we have given you our
+              express prior consent; (iv) you shall not link from a website ("Third Party Website") which prohibites
+              linking to third parties; (v) such Third party Website does not contain content that (a) is offensive or
+              controversial (both at our discretion), or (b) infringes any intellectual property, privacy rights, or
+              other rights of any person or entity; and/or (vi) you, and your website, comply with these Terms and
+              applicable law.
+            </p>
+          </li>
+          <li><b>12. Privacy. </b> We will use any personal information that we may collect or obtain in connection with
+            the Site in accordance with our privacy policy or policies which are available <a
+              href="https://shieldcrypt.com:7384/SuiteSocial/#/reset_password?path=privacy">here</a>
+          </li>
+          <li><b>13. Copyright Policy. </b> It is our policy to respect the legitimate rights of copyright and other
+            intellectual property owners, and we will respond to clear notices of alleged copyright infringement in
+            accordance with applicable</li>
+          <li><b>14.Warranty Disclaimers.</b>
+            <p class="chang-txt">
+              a. This section applies whether or not the services provided under the Site are for payment. Applicable
+              law may not allow the exclusion of certain warranties, so to that extent certain exclusions set forth
+              herein may not apply.
+            </p>
+            <p class="chang-txt">
+              b. THE SITE IS PROVIDED ON AN "AS IS" AND "AS AVAILABLE" BASIS, AND WITHOUT WARRANTIES OF ANY KIND EITHER
+              EXPRESS OR IMPLIED. SUITESOCIAL HEREBY DISCLAIMS ALL WARRANTIES, EXPRESS OR IMPLIED, INCLUDING BUT NOT
+              LIMITED
+              TO IMPLIED WARRANTIES OF MERCHANTABILITY, TITLE, FITNESS FOR A PARTICULAR PURPOSE, NON-INFRINGEMENT, AND
+              THOSE ARISING BY STATUTE OR FROM A COURSE OF DEALING OR USAGE OF TRADE. SUITESOCIAL DOES NOT GUARANTEE
+              THAT THE
+              SITE WILL BE FREE OF BUGS, SECURITY BREACHES, OR VIRUS ATTACKS. THE SITE MAY OCCASIONALLY BE UNAVAILABLE
+              FOR ROUTINE MAINTENANCE, UPGRADING, OR OTHER REASONS. YOU AGREE THAT SUITESOCIAL WILL NOT BE HELD
+              RESPONSIBLE
+              FOR ANY CONSEQUENCES TO YOU OR ANY THIRD PARTY THAT MAY RESULT FROM TECHNICAL PROBLEMS OF THE INTERNET,
+              SLOW CONNECTIONS, TRAFFIC CONGESTION OR OVERLOAD OF OUR OR OTHER SERVERS. WE DO NOT WARRANT, ENDORSE OR
+              GUARANTEE ANY CONTENT, PRODUCT, OR SERVICE THAT IS FEATURED OR ADVERTISED ON THE SITE BY A THIRD PARTY.
+            </p>
+            <p class="chang-txt">
+              c. SUITESOCIAL DOES NOT WARRANT, ENDORSE OR GUARANTEE ANY CONTENT THAT APPEARS IN A USER SUBMISSION, AND
+              DOES NOT
+              MAKE ANY REPRESENTATION OR WARRANTY WITH RESPECT TO, AND DISCLAIMS ALL LIABILITY FOR, ANY SUCH CONTENT.
+            </p>
+            <p class="chang-txt">
+              d. YOU SPECIFICALLY ACKNOWLEDGE THAT SOICALSUITE SHALL NOT BE RESPONSIBLE FOR THE USER SUBMISSIONS OR
+              CONDUCT
+              (INCLUDING DEFAMATORY, OFFENSIVE, ILLEGAL, OR NEGLIGENT CONDUCT) OF ANY SITE USER AND THAT THE RISK OF
+              HARM OR DAMAGE FROM THE FOREGOING RESTS ENTIRELY WITH YOU.
+
+            </p>
+            <p class="chang-txt">
+              e. YOUR RELIANCE ON, OR USE OF, ANY USER SUBMISSION, OR INTERACTION WITH ANY SITE USER OR OWNER, IS AT
+              YOUR SOLE RISK. IF YOU HAVE A DISPUTE WITH ANY SITE USER OR OWNER IN CONNECTION WITH THE SITE OR ANY USER
+              SUBMISSION, YOU AGREE THAT SOICALSUITE IS NOT LIABLE FOR ANY CLAIMS OR DAMAGES ARISING OUT OF OR CONNECTED
+              WITH
+              SUCH A DISPUTE. SOICALSUITE RESERVES THE RIGHT, BUT HAS NO OBLIGATION, TO MONITOR ANY SUCH DISPUTE.
+            </p>
+            <p class="chang-txt">
+              f. EXCEPT AS EXPRESSLY STATED IN OUR PRIVACY POLICY, SOICALSUITE DOES NOT MAKE ANY REPRESENTATIONS,
+              WARRANTIES
+              OR CONDITIONS OF ANY KIND, EXPRESS OR IMPLIED, AS TO THE SECURITY OF ANY INFORMATION YOU MAY PROVIDE OR
+              ACTIVITIES YOU ENGAGE IN DURING THE COURSE OF YOUR USE OF THE SITE.
+
+            </p>
+          </li>
+          <li><b>15. Limitation of liability.</b>
+            <p class="chang-txt">
+              a. TO THE FULLEST EXTENT PERMISSIBLE BY LAW, SOICALSUITE SHALL NOT BE LIABLE FOR ANY DIRECT, INDIRECT,
+              EXEMPLARY,
+              SPECIAL, CONSEQUENTIAL, OR INCIDENTAL DAMAGES OF ANY KIND, OR FOR ANY LOSS OF DATA, REVENUE, PROFITS OR
+              REPUTATION, ARISING UNDER THESE TERMS OR OUT OF YOUR USE OF, OR INABILITY TO USE, THE SITE, EVEN IF
+              SOICALSUITE
+              HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES OR LOSSES. Some jurisdictions do not allow the
+              limitation or exclusion of liability for incidental or consequential damages, so the above limitations may
+              not apply to you.
+            </p>
+            <p class="chang-txt">
+              b. IN NO EVENT SHALL THE AGGREGATE LIABILITY OF SOICALSUITE FOR ANY DAMAGES ARISING UNDER THESE TERMS OR
+              OUT OF
+              YOUR USE OF, OR INABILITY TO USE, THE SITE EXCEED THE TOTAL AMOUNT OF FEES, IF ANY, PAID BY YOU TO
+              SOICALSUITE
+              FOR USING THE SITE DURING THE THREE (3) MONTHS PRIOR TO BRINGING THE CLAIM.
+            </p>
+          </li>
+
+          <li><b>16. Indemnity. </b> You agree to defend, indemnify and hold harmless SuiteSocial and our affiliates,
+            and our
+            respective officers, directors, employees and agents, from and against any and all claims, damages,
+            obligations, losses, liabilities, costs and expenses (including but not limited to attorney's fees) arising
+            from: (i) your use of, or inability to use, the site; (ii) your user submissions; (iii) your interaction
+            with any site user; or (iv) your violation of these terms.</li>
+
+          <li><b>17. Term and termination. </b> These terms are effective until terminated by SuiteSocial or you.
+            SuiteSocial, in
+            its sole discretion, has the right to terminate these terms and/or your access to the site, or any part
+            thereof, immediately at any time and with or without cause (including, without any limitation, for a breach
+            of these terms). SuiteSocial shall not be liable to you or any third party for termination of the site, or
+            any
+            part thereof. if you object to any term or condition of these terms, or any subsequent modifications
+            thereto, or become dissatisfied with the site in any way, your only recourse is to immediately discontinue
+            use of the site. upon termination of these terms, you shall cease all use of the site. this section 17 and
+            sections 8 (intellectual property rights), 9.3 (license to user submissions), 12 (privacy), ‎14 (warranty
+            disclaimers), ‎15 (limitation of liability), ‎16 (indemnity), and 18 (independent contractors) to 21
+            (general) shall survive termination of these terms.
+          </li>
+
+          <li><b>18. Independent contractors. </b> You and SuiteSocial are independent contractors. nothing in these
+            terms
+            creates a partnership, joint venture, agency, or employment relationship between you and SuiteSocial. you
+            must not
+            under any circumstances make, or undertake, any warranties, representations, commitments or obligations on
+            behalf of SuiteSocial.</li>
+
+          <li><b>19. Assignment. </b> These terms, and any rights and licenses granted hereunder, may not be transferred
+            or assigned by you but may be assigned by SuiteSocial without restriction or notification to you. any
+            prohibited
+            assignment shall be null and void.
+          </li>
+          <li><b>20. Governing law. </b> SuiteSocial reserves the right to discontinue or modify any aspect of the site
+            at any
+            time. these terms and the relationship between you and SuiteSocial shall be governed by and construed in
+            accordance with the laws of the state of new york , usa, without regard to its principles of conflict of
+            laws. you agree to submit to the personal and exclusive jurisdiction of the courts located in new york, new
+            york and waive any jurisdictional, venue, or inconvenient forum objections to such courts, provided that
+            SuiteSocial may seek injunctive relief in any court of competent jurisdiction.</li>
+
+          <li><b>21. General. </b> These terms shall constitute the entire agreement between you and SuiteSocial
+            concerning
+            the site. if any provision of these terms is deemed invalid by a court of competent jurisdiction, the
+            invalidity of such provision shall not affect the validity of the remaining provisions of these terms, which
+            shall remain in full force and effect. no waiver of any term of these terms shall be deemed a further or
+            continuing waiver of such term or any other term, and a party's failure to assert any right or provision
+            under these terms shall not constitute a waiver of such right or provision. you agree that any cause of
+            action that you may have arising out of or related to the site must commence within one (1) year after the
+            cause of action accrues. otherwise, such cause of action is permanently barred.
+          </li>
+          <li><b>22. Social APIS.</b>
+            <p class="chang-txt">
+              SuiteSocial uses authorized data from instagram, youtube, google, facebook, twitter, and other platforms
+              (“social platforms”). such data is collected and stored to power SuiteSocial features. you can request
+              your
+              authorized data be deleted from SuiteSocial by contacting
+              <a href="https://shieldcrypt.com:7384/SuiteSocial/#/contact">us here</a>
+            </p>
+            <p class="chang-txt">
+              for example, SuiteSocial uses youtube, google, facebook, instagram, twitter, and other social platforms’
+              apis to
+              collect authorized data. you can learn more about each respective social platform’s terms of service and
+              privacy policies via the links below:
+            </p>
+            <p class="chang-txt mb-0">social platforms terms of service:</p>
+            <ul class="circle-style chang-txt">
+              <li>google: <a
+                  href="https://www.google.com/intl/en/policies/terms/">https://www.google.com/intl/en/policies/terms/</a>
+              </li>
+              <li>YouTube: <a href="https://www.youtube.com/t/terms">https://www.youtube.com/t/terms</a></li>
+              <li>YouTube API Client: <a
+                  href="https://developers.google.com/youtube/terms/api-services-terms-of-service">https://developers.google.com/youtube/terms/api-services-terms-of-service</a>
+              </li>
+              <li>Facebook: <a href="https://www.facebook.com/legal/terms">https://www.facebook.com/legal/terms</a></li>
+              <li>Instagram: <a
+                  href="https://help.instagram.com/478745558852511">https://help.instagram.com/478745558852511</a></li>
+              <li>Twitter: <a href="https://twitter.com/en/tos">https://twitter.com/en/tos</a></li>
+            </ul>
+            <p class="chang-txt mb-0">Social Platforms Privacy Policies:</p>
+            <ul class="circle-style chang-txt">
+              <li>Google & YouTube: <a
+                  href="http://www.google.com/policies/privacy">http://www.google.com/policies/privacy</a></li>
+              <li>Facebook: <a
+                  href="https://www.facebook.com/privacy/explanation">https://www.facebook.com/privacy/explanation</a>
+              </li>
+              <li>Instagram: <a
+                  href="https://help.instagram.com/155833707900388">https://help.instagram.com/155833707900388</a></li>
+              <li>Twitter: <a href="https://twitter.com/en/privacy">https://twitter.com/en/privacy</a></li>
+            </ul>
+
+            <p class="chang-txt mb-0">You can revoke SuiteSocial’s access to your data from YouTube, Google, Facebook,
+              Instagram, and Twitter at any time via each respective platform’s app and security settings via the links
+              below. Note that revoking such authorizations may limit or eliminate certain functionality in Social
+              Suite’s
+              Products.</p>
+            <ul class="circle-style chang-txt">
+              <li>Google & YouTube: <a
+                  href="https://security.google.com/settings/security/permissions">https://security.google.com/settings/security/permissions</a>
+              </li>
+              <li>Facebook: <a
+                  href="https://www.facebook.com/settings?tab=applications">https://www.facebook.com/settings?tab=applications
+                </a></li>
+              <li>Instagram: <a
+                  href="https://www.instagram.com/accounts/manage_access/">https://www.instagram.com/accounts/manage_access/</a>
+              </li>
+              <li>Twitter: <a
+                  href="https://twitter.com/settings/applications">https://twitter.com/settings/applications</a></li>
+            </ul>
+            <p class="chang-txt mb-0">Since we believe that you should always understand how your data is used, if you
+              have any questions about this, please contact us by clicking
+              <a href="https://shieldcrypt.com:7384/SuiteSocial/#/contact">here</a>
+            </p>
+          </li>
+          <li>
+            <b>Last update : December 2019</b>
+          </li>
+        </ul>
+
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="path == 'policy'">
+  <div class="heading">
+    <h2>SuiteSocial Privacy Policy</h2>
+  </div>
+  <div class="main-wrapper">
+    <div class="terms-wrapper">
+      <div class="description">
+        <div id="FAQ">
+          <ul>
+            <li>
+              <b class="lastMod">Last Modified : December 2019</b>
+            </li>
+            <li>
+              This Privacy Policy governs how SuiteSocial use,
+              collect and store information pertaining to user in the following use cases:(i) When you
+              make use of our website <a href="https://shieldcrypt.com:7384/SuiteSocial/#/">
+                SuiteSocial</a> (ii) When you sign up as
+              an “influencer” in our
+              Website; (iii) When you provide us with your Personal Data via/through any of the forms made available by
+              us; and (iv) When you request a demo. We greatly respect your privacy, which is why we make every effort
+              to provide a platform that would live up to the highest of user privacy standards. Please read this
+              Privacy Policy carefully, so you can fully understand our practices in relation to Personal Data.
+              “Personal Data” means any information that can be used, alone or together with other data, to uniquely
+              identify any living human being.
+
+              <div class="title">Table of contents: </div>
+            <li><a class="color-privacy" href="JavaScript:Void(0);">1. What Information we Collect</a></li>
+            <li><a class="color-privacy" href="JavaScript:Void(0);">2. How we Protect and Store your Personal Data;</a>
+            </li>
+
+            <li><a class="color-privacy" href="JavaScript:Void(0);">3. How we share your Personal Data</a></li>
+
+            <li><a class="color-privacy" href="JavaScript:Void(0);">4. Additional Information Regarding Transfers of
+                Personal Data</a></li>
+            <li><a class="color-privacy" href="JavaScript:Void(0);">5. Your Rights</a></li>
+            <li><a class="color-privacy" href="JavaScript:Void(0);">6. Use by Children</a></li>
+            <li><a class="color-privacy" href="JavaScript:Void(0);">7. How to Contact Us</a></li>
+
+            <li>
+
+
+              <div class="title" id="t1">Information we collect</div>
+              When You Visit our Websites - You are free to explore the Websites without providing any Personal
+              Information about yourself. When you visit the Websites or register for the Subscription Service, we
+              request that you provide Personal Information about yourself, and we collect Navigational Information.
+            </li>
+            <li>
+              "Personal Information" -
+              This refers to any information that you voluntarily submit to us (like when you request a demo or signup
+              as an influencer) and that identifies you personally, including contact information, such as your name,
+              e-mail address, company name, address, phone number, social accounts, brand co-operations, and other
+              information about yourself or your business. Personal Information can also include information about any
+              transactions, both free and paid, that you enter into on the Websites, and information about you that is
+              available on the internet, such as from Facebook, LinkedIn, Twitter and Google, or publicly available
+              information that we acquire from service providers. Personal Information also includes Navigational
+              Information or Payment Information where such information can directly or indirectly identify an
+              individual. Navigational information refers to information about your computer and your visits to this
+              website such as your IP address, geographical location, browser type, referral source, length of visit and
+              pages viewed. We collect and process payment information from you when you subscribe to the Subscription
+              Service, including credit cards numbers and billing information, using third party PCI-compliant service
+              providers. Except for this, we do not collect Sensitive Information from you. We save this information
+              unless you withrdraw consent. The legal basis is consent and we save the information until you withdraw
+              consent.
+            </li>
+            <li>
+              Log Files - When you use our services our view content provided by us, we automatically collect
+              information about your computer hardware and software. This information can include your IP address,
+              browser type, domain names, internet service provider (ISP), the files viewed on our site (e.g., HTML
+              pages, graphics, etc.), operating system, clickstream data, access times and referring website addresses.
+              This information is used by SuiteSocial for the operation of the Subscription Service, to maintain
+              quality of
+              the Subscription Service, and to provide general statistics regarding use of the SuiteSocial Website. For
+              these
+              purposes, we do link this automatically-collected data to Personal Information such as name, email
+              address, address, and phone number. The legal basis is legitimate interest and we save the information for
+              12 months.
+            </li>
+            <li>
+              Information we collect from third parties - From time to time, we may receive Personal Information about
+              you from third party sources including partners with which we offer co-branded services or engage in joint
+              marketing activities, and publicly available sources such as social media websites.
+            </li>
+            <li>
+
+              <div class="title" id="t2">HOW WE PROTECT AND STORE YOUR INFORMATION</div>
+              I. Security.
+            </li>
+            <li>We have implemented appropriate technical, organizational and security measures designed to reduce the
+              risk of accidental destruction or loss, or the unauthorized disclosure or access to such information
+              appropriate to the nature of the information concerned. However, please note that we cannot guarantee that
+              the information will not be exposed as a result of unauthorized penetration to our servers. Nevertheless,
+              we make commercially reasonable efforts to make the collection and security of such information consistent
+              with this Privacy Policy and all applicable laws and regulations. As the security of information depends
+              in part on the security of the computer, device or network you use to communicate with us and the security
+              you use to protect your user IDs and passwords, please make sure to take appropriate measures to protect
+              this information.
+            </li>
+            <li>
+              II. Retention of your Personal Data. </li>
+            <li>In addition to the retention periods mentioned in Section 1 above, in some circumstances we may store
+              your Personal Data for longer periods of time, for example (i) where we are required to do so in
+              accordance with legal, regulatory, tax or accounting&nbsp;requirements, or (ii) for us to have an accurate
+              record of your dealings with us in the event of any complaints or challenges, or (iii) if we reasonably
+              believe there is a prospect of litigation relating to your Personal Data or dealings.
+
+              <div class="title" id="t3">HOW WE SHARE YOUR PERSONAL INFORMATION</div>
+              In addition to the recipients described in Section 1, we may share your information as follows:</li>
+            <li>
+              o To the extent necessary, with regulators, to comply with all applicable laws, regulations and rules, and
+              requests of law enforcement, regulatory and other governmental agencies or if required to do so by court
+              order;If, in the future, we sell or transfer some or all of our business or assets to a third party, we
+              will (to the minimum extent required) disclose information to a potential or actual third party purchaser
+              of our business or assets. Merger, Sale or Bankruptcy. In the event that we are acquired by or merged with
+              a third party entity, or in the event of bankruptcy or a comparable event, we reserve the right to
+              transfer or assign Personal Data in connection with the foregoing events.</li>
+            <li>
+              o Where you have provided your consent to us sharing the Personal Data (e.g., where you provide us with
+              marketing consents or opt-in to optional additional services or functionality).
+
+              o Service Providers - We employ other companies and people to provide services to visitors to our
+              Websites, our customers, and users of the Subscription Service and may need to share your information with
+              them to provide information, products or services to you. Examples may include removing repetitive
+              information from prospect lists, analyzing data or performing statistcal analysis, providing marketing
+              assistance, processing credit card payments, supplementing the information you provide us in order to
+              provide you with better service, and providing customer service or support. In all cases where we share
+              your information with such agents, we explicitly require the agent to acknowledge and adhere to our
+              privacy and customer data handling policies.
+            </li>
+            <li>
+              o SuiteSocial Partners - In addition, we may share data with trusted partners to contact you based on
+              your
+              request to receive such communications, help us perform statistical analysis, or provide customer support.
+              Such third parties are prohibited from using your Personal Information except for these purposes, and they
+              are required to maintain the confidentiality of your information. We partner with trusted third parties to
+              provide you with co-marketing content that we think may be relevant to you. When you engage with these
+              co-marketing partners, we will tell you who we are sharing data with, and provide a link to the
+              co-marketing partner’s privacy policy so you can learn more about how to opt-out of the partner’s
+              communications. These co-marketing partners are required to adhere to our privacy and data protection
+              policies. For more information on our co-marketing program, see this page.
+            </li>
+            <li>
+              o Corporate Events - If we (or our assets) are acquired by another company, whether by merger,
+              acquisition, bankruptcy or otherwise, that company would receive all information gathered by SuiteSocial
+              on the
+              Websites and the Subscription Service. In this event, you will be notified via email and/or a prominent
+              notice on our website, of any change in ownership, uses of your Personal Information, and choices you may
+              have regarding your Personal Information.
+            </li>
+            <li>
+              o Where you have provided your consent to us sharing the Personal Data (e.g., where you provide us with
+              marketing consents or opt-in to optional additional services or functionality).
+            </li>
+            <li>
+
+              <div class="title" id="t4">ADDITIONAL INFORMATION REGARDING TRANSFERS OF PERSONAL INFORMATION</div>
+
+              Where we transfer your Personal Data outside of SuiteSocial, for example to third parties who help
+              provide our
+              products and services, we will obtain contractual commitments from them to protect your Personal Data.
+
+              Some of these assurances are well recognized certification schemes like the EU - US Privacy Shield for the
+              protection of Personal Data transferred from within the EU to the United States; or
+
+              Where we receive requests for information from law enforcement or regulators, we carefully validate these
+              requests before any Personal Data is disclosed.
+
+
+              <div class="title" id="t5">YOUR RIGHTS </div>
+              The following rights (which may be subject to certain exemptions or derogations), shall apply to
+              individuals who are protected by the GDPR:
+              You have a right to access information held about you. Your right of access is normally be exercised free
+              of charge, however we reserve the right to charge an appropriate administrative fee where permitted by
+              applicable law;
+            </li>
+            <li>
+              You have the right to request that we amend any Personal Data we hold that it is inaccurate or misleading.
+            </li>
+            <li>
+              o You have the right to request the erasure of the Personal Data that relates to you. Please note that
+              there may be circumstances in which we are required to retain your data, for example for the
+              establishment, exercise or defense of legal claims;
+            </li>
+            <li>
+              o The right to object to or to request restriction of the processing. However, there may be circumstances
+              in which we are legally entitled to refuse your request;
+            </li>
+            <li>
+              o The right to data portability. This means that you may have the right to receive your Personal Data in a
+              structured, commonly used and machine-readable format, and that you have the right to transmit that data
+              to another controller;
+            </li>
+            <li>
+              o You have the right to object to profiling;
+            </li>
+            <li>
+              o You have a right to lodge a complaint with your local data protection supervisory authority
+              (i.e.,&nbsp;your place of habitual residence, place or work or place of alleged infringement) at any time.
+              We ask that you please attempt to resolve any issues with us before you contact your local supervisory
+              authority
+            </li>
+            <li>
+              o The right to withdraw your consent. Please note that t there may be circumstances in which we are
+              entitled to continue processing your data, in particular if the processing is required to meet our legal
+              and regulatory obligations.
+            </li>
+            <li>
+              o You also have a right to request details of the basis on which your Personal Data is transferred outside
+              the European Economic Area, but you acknowledge that data transfer agreements may need to be partially
+              redacted for reasons of commercial confidentiality.
+            </li>
+            <li>
+
+              You can exercise your rights by contacting us <a
+                href="https://shieldcrypt.com:7384/SuiteSocial/#/reset_password?path=policy">
+                here</a>
+              Subject to legal and other permissible considerations, we will make every reasonable effort to honor your
+              request promptly or inform you if we require further information in order to fulfil your request.
+              &nbsp;When processing your request, we may ask you for additional information to confirm your identity and
+              for security purposes, before disclosing the Personal Data requested to you. We reserve the right to
+              charge a fee where permitted by law, for instance if your request is manifestly unfounded or excessive.
+              In the event that your request would adversely affect the rights and freedoms of others (for example,
+              would impact the duty of confidentiality we owe to others) or if we are legally entitled to deal with your
+              request in a different way than initial requested, we will address your request to the maximum extent
+              possible, all in accordance with applicable law. &nbsp;
+            </li>
+            <li>
+              <div class="title" id="t6">USE BY CHILDREN</div>
+              We do not offer our products or services for use by children. If you are under 18, you may not use the
+              Website, or provide any information to the Website without involvement of a parent or a guardian. We do
+              not knowingly collect information from, and/or about children.
+            </li>
+            <li>
+              <div class="title" id="t7">CONTACT US</div>
+
+              If you have any questions, concerns or complaints regarding our compliance with this notice and the data
+              protection laws, or if you wish to exercise your rights, we encourage you to first contact us
+              <a href="https://shieldcrypt.com:7384/SuiteSocial/#/reset_password?path=policy">
+                here</a>
+            </li>
+            <li>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

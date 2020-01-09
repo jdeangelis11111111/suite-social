@@ -1,0 +1,80 @@
+.active{
+    color: green;
+    margin-left: 12px;
+}
+.inactive{
+    color: red;
+    margin-left: 12px;
+}
+
+.btn-right {
+    display: flex;
+    justify-content: flex-end;
+}
+.set-btn-default {
+    background: #ea3441;
+    color: white;
+    max-width: 100% !important;
+    line-height: 35px !important;
+    height: 35px !important;
+    border-radius: 4px;
+    letter-spacing: 0.5px;
+    text-transform: capitalize;
+}
+.set-btn-default:hover {
+    color: #fff !important
+}
+.descPost{
+    height: 50px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+ .posts-table  {
+    flex: 1 1 auto;
+    border-bottom: 1px solid rgba(0, 0, 0, .12);
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+
+    .mat-header-row {
+        min-height: 64px;
+    }
+
+    .product {
+        position: relative;
+        cursor: pointer;
+        // height: 84px;
+        height: 61px;
+    }
+    .mat-header-cell {
+        font-weight: bold;
+        font-size: 15px;}
+    .mat-cell {
+        min-width: 0;
+        display: flex;
+        align-items: center;
+        max-height: 48px;
+    }
+
+    .mat-column-id {
+        flex: 0 1 6%;
+        padding: 0 10px 0 17px !important;
+    }
+    .mat-column-title {
+        flex: 0 1 24%;
+    }
+
+    .mat-column-description {
+        flex: 0 1 58%;
+        margin-left: 5px;
+    }
+
+    .mat-column-active {
+        flex: 0 1 12%;
+    }
+    .mat-column-edit {
+        flex: 0 1 12%;
+        padding: 0 5px !important;
+    }
+} 

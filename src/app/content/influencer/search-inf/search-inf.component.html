@@ -1,0 +1,157 @@
+<!-- <div class="spinner" *ngIf="isModuleLoading">
+  <div class="double-bounce1 mat-bg-primary" style="background: wheat;"></div>
+  <div class="double-bounce2 mat-bg-accent" style="background: #EA3441;"></div>
+</div> -->
+<div class="simple-box" id="brand-box">
+  <div class="breadcrum-heading">
+    <h3 class="h3-basic-comman">Brand Finder</h3>
+    <div class="page-breadcrumb">
+      <!--  <nav>
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Dashboard</a></li> |
+            <li class="breadcrumb-item active" aria-current="page">Influencer Finder Template</li>
+          </ol>
+        </nav> -->
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+      <div class="white-card">
+        <form class="input-form">
+          <input class="form-control form-control-lg" type="search" (keyup)="applyFilter($event.target.value)"
+            placeholder="Search By Brand Name" aria-label="Search">
+          <button class="btn btn-primary search-btn" type="submit" (click)="check()">Search</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="row search-influencers">
+    <div class="col-xl-9 col-lg-8 col-md-8 col-sm-12 col-12 left-side-box">
+      <div class="app-loader">
+
+      </div>
+      <div *ngIf="showNoRecords" style="color: grey;margin-left: 5px;">No brands found</div>
+      <div class="white-card-board" *ngFor="let data of brands">
+        <div class="top-details">
+          <div class="user-details-serach">
+            <div class="user-avatar">
+              <img src="assets/image/icon_brand.png" alt="img">
+            </div>
+            <div class="total-details">
+              <div class="name-user-rate">
+                <div class="user-avatar-name">
+                  <h2 style="text-transform: capitalize;">{{data.yourcompanyName}}</h2>
+                </div>
+                <div class="rating-star">
+                  <mat-icon *ngIf="data.averageRating >= 1" class="starRate">star</mat-icon>
+                  <mat-icon *ngIf="data.averageRating > 1 && data.averageRating < 2" class="starRate">star_half
+                  </mat-icon>
+                  <mat-icon *ngIf="data.averageRating >= 2" class="starRate">star</mat-icon>
+                  <mat-icon *ngIf="data.averageRating > 2 && data.averageRating < 3" class="starRate">star_half
+                  </mat-icon>
+                  <mat-icon *ngIf="data.averageRating >= 3" class="starRate">star</mat-icon>
+                  <mat-icon *ngIf="data.averageRating > 3 && data.averageRating < 4" class="starRate">star_half
+                  </mat-icon>
+                  <mat-icon *ngIf="data.averageRating >= 4" class="starRate">star</mat-icon>
+                  <mat-icon *ngIf="data.averageRating > 4 && data.averageRating < 5" class="starRate">star_half
+                  </mat-icon>
+                  <mat-icon *ngIf="data.averageRating >= 5" class="starRate">star</mat-icon>
+                  <mat-icon *ngIf="data.averageRating == 0" class="starRate">star_border</mat-icon>
+                  <mat-icon *ngIf="data.averageRating <= 1" class="starRate">star_border</mat-icon>
+                  <mat-icon *ngIf="data.averageRating <= 2" class="starRate">star_border</mat-icon>
+                  <mat-icon *ngIf="data.averageRating <= 3" class="starRate">star_border</mat-icon>
+                  <mat-icon *ngIf="data.averageRating <= 4" class="starRate">star_border</mat-icon>
+                  <p class="d-inline-block text-dark" style="display: inline;">
+                    ( {{data.totalRating}} Reviews) </p>
+                </div>
+                <div class="user-avatar-address">
+                  <p>
+                    <mat-icon class="locate">room</mat-icon>US
+                    <span>{{data.org.organizationEmail}}</span>
+                    <!-- <span class="m-l-10">Male
+                        <span class="m-l-20">29 Year Old</span>
+                      </span> -->
+                  </p>
+                  <div class="label-lists">
+                    <a *ngIf="data.describeYourBrand" class="badge">{{data.describeYourBrand}}</a>
+                    <a *ngIf="data.productCategory" class="badge">{{data.productCategory}}</a>
+                    <a *ngIf="data.socialMediaPlatform" class="badge">{{data.socialMediaPlatform}}</a>
+
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+          <div class="search-user-msg">
+            <!--  <a href="#" class="btn-wishlist">
+                <mat-icon class="starRate">star</mat-icon>
+              </a> -->
+            <a class="send-msg-btn" (click)="review(data.org.organizationEmail)">Review/ Rate</a>
+            <a class="send-msg-btn" (click)="sendMsg(data.org.organizationEmail)">Contact</a>
+            <!-- <a class="send-msg-btn" (click)="pay(data.org.organizationEmail)">Pay</a> -->
+          </div>
+        </div>
+        <!--         <div class="user-social-media">
+          <ul>
+            <li><img class="imageIcon" src="assets/icons/youtube.png"><span>{{data.youtubeFollowers}}</span></li>
+            <li><img class="imageIcon" src="assets/icons/fb.png"><span>{{data.facebookFollowers}}</span></li>
+            <li><img class="imageIcon" src="assets/icons/tweet.png"><span>{{data.twitterFollowers}}</span></li>
+            <li><img class="imageIcon" src="assets/icons/insta.jpg"><span>{{data.instagramFollowers}}</span></li>
+            <li><img class="imageIcon" src="assets/icons/blog.jpg"><span>{{data.blogFollowers}}</span></li>
+            
+          </ul>
+        </div> -->
+      </div>
+    </div>
+    <div class="col-xl-3 col-lg-4 col-md-4 col-sm-12 col-12 right-side-box">
+      <div class="white-card adjust-card">
+        <!-- <h3 class="h3-basic-comman01">Sorting By </h3> -->
+
+        <!-- <h3 class="h3-basic-comman01">Influncer by Rating</h3> -->
+        <!-- <h3 class="h3-basic-comman01">Social Media Platform</h3> -->
+        <!-- <button mat-raised-button class="clearFilter" (click)="clearFilter()">Clear Filters</button> -->
+        <h3 class="h3-basic-comman01">Brand By Rating</h3>
+        <div class="label-sets">
+          <form name="rateForm" [formGroup]="rateForm">
+            <label *ngFor="let mc of rating;let i =index" class="inner-labels">
+              <input type="radio" formControlName="rate" (change)="getRate(mc)" [value]="mc.value">
+              <mat-icon class="star-icon">star</mat-icon>
+              <mat-icon *ngIf="mc.value > '1'" class="star-icon">star</mat-icon>
+              <mat-icon *ngIf="mc.value > '2'" class="star-icon">star</mat-icon>
+              <mat-icon *ngIf="mc.value > '3'" class="star-icon">star</mat-icon>
+              <mat-icon *ngIf="mc.value > '4'" class="star-icon">star</mat-icon>
+
+
+            </label>
+          </form>
+        </div>
+        <h3 class="h3-basic-comman01">Brand Category</h3>
+        <div class="label-sets">
+          <label *ngFor="let mc of opts;let i =index" class="inner-labels">
+            <!-- formControlName="categPro"formControlName="topic" -->
+            <input type="checkbox" (change)="topics($event,mc,i)" [value]="mc">
+            {{mc}}
+            <form name="topicForm" [formGroup]="topicForm">
+              <input *ngIf="mc == 'Others'" class="otheropt" formControlName="topic" type="text">
+            </form>
+          </label>
+        </div>
+        <h3 class="h3-basic-comman01">Overall Budget</h3>
+        <!--     <div class="label-sets">
+          <label *ngFor="let bd of budget;let i=index" class="inner-labels">
+            formControlName="categPro"formControlName="topic"
+            <input type="checkbox" (change)="budgetA($event,bd,i)" [value]="bd">
+            {{bd}}
+
+          </label>
+        </div> -->
+        <input class="inputBud" matInput (keypress)=_keyPressDec($event)>
+        <!-- <h3 class="h3-basic-comman01">Age Demographics</h3> -->
+        <div class="sub">
+          <a class="send-msg-btn" (click)="check()">Submit</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,455 @@
+/* You can add global styles to this file, and also import other style files */
+
+
+
+/*  shvani */
+@font-face {
+    font-family: 'Montserrat Alternates', sans-serif;
+    src: url(../fonts/MontserratAlternates/MontserratAlternates-Regular.ttf) format("opentype");
+  }
+  * {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  body {
+    background: #fff;
+    color: #000000;
+    line-height: 1.6;
+    font-size: 14px;
+    font-family: 'Montserrat', sans-serif;
+    /*font-family: 'Montserrat Alternates', sans-serif;*/
+    overflow-x: hidden;
+  }
+  html,body,p,ul,li,ol,h1,h2,h3,h4,h5,h6 {
+    margin: 0;
+    padding: 0;
+  }
+  img {
+    max-width: 100%;
+  }
+  ul, li {
+      margin: 0;
+      padding: 0;
+      list-style-type: none;
+  }
+  a, a:hover, a:focus {
+    display: inline-block;
+    text-decoration: none;
+    transition: all 0.3s;
+    outline: none;
+  }
+  input, input:hover, input:focus {
+    outline: none;
+  }
+  .btn {
+    white-space: initial;
+  }
+  .btn:focus, .btn:hover {
+    color: #fff;
+      outline: 0;
+      box-shadow: 0 0 0 .2rem rgba(0,123,255,0);
+  }
+  .table {
+    margin: 0;
+  }
+  /* Common Css */
+  #Wrapper {
+    min-width: 320px;
+  }
+  /* Signin */
+  .login-form {
+      width: 100%;
+      min-height: 100vh;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-sizing: border-box;
+      padding: 20px 80px 20px 80px;
+  }
+  .login-form .show-web-app {
+      position: relative;
+      box-sizing: border-box;
+      width: calc(100% - 400px);
+      height: 520px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px -5px #00000091;
+  }
+  .login-form .show-web-app .container {
+      width: 100%;
+      height: calc(100vh - 67px);
+      padding: 8px;
+      border-radius: 10px;
+      background: rgba(255,255,255,0.5);
+  }
+  .login-form .show-web-app .container .carousel-control.left,
+  .login-form .show-web-app .container .carousel-control.right,
+  .login-form .show-web-app .container .carousel-indicators {
+      opacity: 0;
+  }
+  .login-form .show-web-app .container .carousel-inner img {
+      width: 100%;
+  }
+  .slide-logo {
+      position: absolute;
+      left: 15px;
+      top: 15px;
+      padding: 5px;
+      background: rgba(255,255,255,0.5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      z-index: 99;
+      border-radius: 8px;
+  }
+  .slide-logo img {
+      width: 150px;
+  }
+  .login-form .show-web-app .container .carousel-inner .item {
+      min-height: 504px;
+      max-height: 504px;
+      border-radius: 8px;
+  }
+  .slide01 {
+      background: #fff url(../image/slide01-min.jpg) no-repeat scroll center center / cover;
+  }
+  .slide02 {
+      background: #fff;
+      position: relative;
+  }
+  .slide02::before {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 280px;
+      height: 500px;
+      background: url(../image/img_iphone.png) no-repeat scroll 0 0 / 100%;
+      content: '';
+      margin: -200px 0 0 -140px;
+  }
+  .slide03 {
+      background: #fff url(../image/slide03-min.jpg) no-repeat scroll center center / cover;
+  }
+  .login-form .login {
+      position: relative;
+      background: #fff url(../image/circle01_light.png) no-repeat scroll -80px -150px / 250px;
+      border-radius: 10px;
+      padding: 10px 15px 20px;
+      box-sizing: border-box;
+      width: 370px;
+      min-height: 500px;
+      box-shadow: 0 0 10px -5px #00000091;
+      display: flex;
+      align-content: center;
+      flex-direction: column;
+      justify-content: center;
+  }
+  .login-form .login::before {
+      position: absolute;
+      content: '';
+      left: 50%;
+      bottom: 10px;
+      height: 5px;
+      border-radius: 6px;
+      width: 100px;
+      margin: 0 0 0 -50px;
+      background: rgba(0,0,0,0.3);
+  }
+  .outer-circle01 {
+      position: absolute;
+      left: -80px;
+      top: -150px;
+      width: 250px;
+      height: 250px;
+      border-radius: 50%;
+      background: url(../image/circle01.png) no-repeat scroll 0 0 / 250px;
+      z-index: -1;
+  }
+  .outer-circle02 {
+      position: absolute;
+      left: -250px;
+      top: 250px;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: url(../image/circle02.png) no-repeat scroll 0 0 / 50px;
+      z-index: -1;
+  }
+  .outer-circle03 {
+      position: absolute;
+      right: 0px;
+      bottom: 0px;
+      width: 120px;
+      height: 38px;
+      border-radius: 50%;
+      background: url(../image/circle01_light.png) no-repeat scroll 0px 0px / 200px;
+      z-index: 0;
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+      border-top-right-radius: 0;
+  }
+  .outer-circle04 {
+      position: absolute;
+      right: -24px;
+      top: 150px;
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      background: url(../image/circle02.png) no-repeat scroll 0 0 / 300px;
+      z-index: -1;
+  }
+  .outer-circle05 {
+      position: absolute;
+      right: -400px;
+      bottom: 0px;
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background: url(../image/circle01_light.png) no-repeat scroll 0 0 / 100px;
+      z-index: -1;
+  }
+  .login-form .login .logo img {
+      width: 150px;
+  }
+  .login-form .login h3 {
+      color: #EA3441;
+      margin: 10px 0 20px;
+      font-size: 14px;
+      font-weight: normal;
+  }
+  .login-form .login .choose-user {
+      display: flex;
+      align-content: center;
+      justify-content: space-between;
+      margin: 0 0 10px;
+      padding: 0 10px;
+  }
+  .login-form .login .choose-user li {
+      width: 40%;
+      margin: 0 5%;
+  }
+  .login-form .login .choose-user li label {
+      background: #eaeaea4f url(../image/tick-circle.png) no-repeat scroll left -20px bottom -20px / 16px;
+      padding: 6px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      border-radius: 5px;
+      box-shadow: 0 5px 10px -8px #00000070;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-align: center;
+      position: relative;
+      border: 1px solid #eaeaea4f;
+  }
+  .login-form .login .choose-user li label:hover {
+      background: #ea3441 url(../image/tick-circle.png) no-repeat scroll top 5px right 5px / 16px !important;
+      border: 1px solid #eaeaea4f !important;
+      color: #fff !important;
+      box-shadow: 0 5px 10px -6px #00000070 !important;
+  }
+  .login-form .login .choose-user li label div {
+      width: 45px;
+      height: 45px;
+      padding: 6px;
+      background:	#fff;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-sizing: border-box;
+      margin: 0 auto 4px;
+      border-radius: 10px;
+  }
+  .login-form .login .choose-user li label img {
+      width: 100%;
+  }
+  .login-form .login .choose-user li label input {
+      margin: 0;
+      position: absolute;
+      right: 10px;
+      opacity: 0;
+  }
+  .login-form .login .choose-user li label p {
+      text-transform: uppercase;
+      font-family: sans-serif;
+      font-size: 12px;
+      margin: 5px 0 0 0;
+  }
+  .login-form .login h5 {
+      color: gray;
+      margin: 0 0 20px;
+      font-size: 13px;
+  }
+  .login-form form .form-group {
+      position: relative;
+  }
+  .login-form form .form-group label {
+      position: absolute;
+      left: 6px;
+      top: -10px;
+      background:	#fff;
+      margin: 0;
+      color: #777;
+      font-size: 12px;
+      padding: 0 5px;
+      letter-spacing: 1px;
+      font-weight: normal;
+  }
+  .login-form form .form-group input, .login-form form .form-group textarea {
+      height: 36px;
+      line-height: 36px;
+      border: 1px solid #EA3441;
+      display: block;
+      width: 100%;
+      border-radius: 5px;
+      margin: 0 0 20px;
+      padding: 0 10px;
+      font-size: 13px;
+  }
+  .login-form form .form-group textarea{
+      padding: 10px;
+      height: 100px;
+      line-height: 20px;
+  }
+  .login-form form button {
+      display: block;
+      width: 100%;
+      border: none;
+      height: 35px;
+      line-height: 35px;
+      color: #fff;
+      font-weight: bold;
+      letter-spacing: 1.3px;
+      font-size: 13px;
+      margin: 0 0 10px;
+      border-radius: 5px;
+      background: #EA3441;
+  }
+  .create-link a {
+      color: gray;
+      text-decoration: underline;
+  }
+  .login-form form .create-link a {
+      color: gray;
+      font-weight: bold;
+      letter-spacing: 1PX;
+  }
+  .social-icons {
+      display: flex;
+      justify-content: center;
+      align-content: center;
+      margin: 20px 0;
+  }
+  .social-icons li a {
+      margin: 0 10px;
+  }
+  .social-icons li a .fa {
+      height: 30px;
+      line-height: 30px;
+      width: 30px;
+      text-align: center;
+      font-size: 17px;
+      color: #fff;
+      border-radius: 50%;
+      transition: all 0.2s;
+      transform: scale(1);
+  }
+  .social-icons li a .fa:hover {
+      transform: scale(1.1);
+  }
+  .social-icons li a .fa-facebook {
+      background: #3A559F;
+  }
+  .social-icons li a .fa-twitter {
+      background: #39A9F3;
+  }
+  .social-icons li a .fa-google-plus {
+      background: #CC3731;
+  }
+  .social-icons li a .fa-instagram {
+      background: url(../image/insta_bg.jpg) no-repeat scroll 0 0 / 100% 100%;
+      font-size: 17.5px;
+  }
+  .social-icons li a .fa-youtube {
+      background: #CC181E;
+  }
+  /* Signup */
+  .signup-form .login .choose-user li {
+    width: 46% !important;
+    margin: 0 2% !important;
+  }
+  .signup-form .login .choose-user li label {
+      flex-direction: initial !important;
+      align-items: center;
+  }
+  .signup-form .login .choose-user li label {
+      padding: 6px;
+      font-size: 13px;
+  }
+  .signup-form .login .choose-user li label div {
+      margin: 0 6px 0 0;
+      width: 28px;
+      padding: 3px;
+      height: 28px;
+  }
+  .signup-form .login h6 {
+      color: #000;
+      font-weight: bold;
+      margin: 0 0 15px;
+  }
+  .active-hover {
+      background: #ea3441 url(../image/tick-circle.png) no-repeat scroll top 5px right 5px / 16px !important;
+      border: 1px solid #eaeaea4f !important;
+      box-shadow: 0 5px 10px -6px #00000070 !important;
+      color: #fff !important;
+  }
+  .brand-orgnization, .brand-under-orgnization, .influence_user, .social-show {
+      display: none;
+  }
+  .check-turms {
+      margin: -10px 0 10px;
+      font-size: 12px;
+      line-height: 20px;
+      color: gray;
+  }
+  .check-turms input {
+      float: left;
+      margin: 3.5px 7px 0 0;
+  }
+  .check-turms a {
+      color: #EA3441;
+  }
+  .get-app {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 15px 0 0 0;
+  }
+  .get-app a img {
+      margin: 0 10px;
+      width: 130px;
+  }
+  /* Responsive */
+  @media screen and (max-width: 991px){
+  .login-form {
+      padding: 20px;
+  }
+  }
+  @media screen and (max-width: 768px){
+  .login-form .show-web-app {
+      display: none;
+  }
+  .login-form {
+      justify-content: center;
+  }
+  }
+
+#black-credit-card-button {
+    background: #ea3441 !important;
+    color: #fff;
+    font-size: 1.15em;
+    border-radius: 4px !important;
+}
+  

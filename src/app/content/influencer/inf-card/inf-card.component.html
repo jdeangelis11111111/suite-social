@@ -1,0 +1,364 @@
+<div *ngIf="data.type == 'survey'" id="influencersurveymodal">
+  <div (click)="onNoClick()">
+    <img class="imageC" src="assets/image/close.png">
+  </div>
+  <div class="modal-header">
+    <h4 class="modal-title">Influencer Survey</h4>
+    <!-- <button (click)="close()" type="button" class="close" data-dismiss="modal">&times;</button> -->
+  </div>
+  <div class="modal-body">
+    <h3 class="text-center">Please spend 2-10 minutes to complete your profile so we can match you with
+      brands.</h3>
+
+    <div class="example-container">
+      <form name="influencerSurveyForm" [formGroup]="influencerSurveyForm">
+        <mat-form-field>
+          <label>1. What is your name?<span style="color: red;">*</span></label>
+          <input matInput formControlName="name" maxlength="50">
+          <mat-error *ngIf="influencerSurveyForm.get('name').hasError('required')">
+            Name is required
+          </mat-error>
+        </mat-form-field>
+        <!--    <mat-form-field>
+         <label>2. What is your email?<span style="color: red;">*</span></label>
+          <input matInput formControlName="email" maxlength="50">
+          <mat-error *ngIf="influencerSurveyForm.get('email').hasError('required')">
+            Email is required
+          </mat-error>
+          <mat-error *ngIf="influencerSurveyForm.get('email').hasError('email')">
+            Please enter a valid email address
+          </mat-error>
+        </mat-form-field> -->
+
+        <mat-form-field>
+          <label>2. What is your phone number?<span style="color: red;">*</span></label>
+          <input matInput formControlName="mobile" minlength="9" maxlength="15" (keypress)=_keyPressDec($event)>
+
+          <mat-error *ngIf="influencerSurveyForm.get('mobile').hasError('required')">
+            It is required.
+          </mat-error>
+          <mat-error *ngIf="influencerSurveyForm.get('mobile').hasError('pattern')">
+            It is not a valid mobile number.
+          </mat-error>
+          <mat-error *ngIf="influencerSurveyForm.get('mobile').hasError('minlength')">
+            Please enter atleast 9 digit mobile number.
+          </mat-error>
+        </mat-form-field>
+
+
+        <mat-form-field>
+          <label>3. What is your birth year?<span style="color: red;">*</span></label>
+          <mat-select formControlName="year">
+            <mat-option [value]="year" *ngFor="let year of years">{{year}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field>
+          <label>4. What is your gender?<span style="color: red;">*</span></label>
+          <mat-select formControlName="gender">
+            <mat-option [value]="gen" *ngFor="let gen of gender">{{gen}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <!--  <mat-form-field>
+          <div class="external-labels">
+            <label>6. Which platforms do you use and the number of followers you have on that
+              platform?</label>
+            <label *ngFor="let plat of platforms ;let ind = index" class="inner-labels">
+              <input type="checkbox" (change)="addPlat($event,ind,plat)" [value]="plat">
+              {{plat}}
+              <mat-select formControlName="gender" [disabled]="qty[ind] ? null : true" (change)="addPlatNo($event,ind)"
+                class="form-control" id="">
+                <mat-option value="ran" *ngFor="let ran of range">{{ran}}</mat-option>
+              </mat-select>
+            </label>
+          </div>
+        </mat-form-field> -->
+        <div class="form-group">
+          <label>5. Which platforms do you use and the number of followers you have on that
+            platform?
+          </label>
+          <div class="set-label">
+            <!-- formControlName="platform" -->
+            <label *ngFor="let plat of platforms ;let ind = index" style="width: 100%;">
+              <input type="checkbox" (change)="addPlat($event,ind,plat)" [value]="plat">
+              {{plat}}
+              <select [disabled]="qty[ind] ? null : true" (change)="addPlatNo($event,ind)" class="form-control" id="">
+                <!--   [(ngModel)]="qty[ind]" -->
+                <option *ngFor="let ran of range">{{ran}}
+                </option>
+              </select>
+            </label>
+
+          </div>
+        </div>
+
+        <!-- <mat-form-field> -->
+        <div class="external-labels">
+          <label>6. What topics do you post most about? Choose up to three.</label>
+          <label *ngFor="let opt of options;let i = index" class="inner-labels">
+            <!--  -->
+            <input type="checkbox" (change)="topics($event,opt,i)" [value]="opt">
+            {{opt}}
+            <input *ngIf="opt == 'Others'" type="text" formControlName="topic">
+          </label>
+        </div>
+        <!-- </mat-form-field> -->
+        <mat-form-field>
+          <label>7. Top country your followers are located in?</label>
+          <mat-select formControlName="country" multiple>
+            <mat-option [value]="country" *ngFor="let country of countries"><label style="line-height: 1;">
+                {{country}}</label></mat-option>
+          </mat-select>
+
+        </mat-form-field>
+
+        <mat-form-field>
+          <label>8. Top 3 cities your followers are located in?</label>
+          <mat-select formControlName="city" multiple>
+            <!-- <mat-option [value]="city" *ngFor="let city of cities"><label>
+                {{city}}</label></mat-option> -->
+            <mat-optgroup label="New York" style="color:#585252">
+              <mat-option *ngFor="let citNY of cit" [value]="citNY" style="margin-left:22px">
+                {{citNY}}
+              </mat-option>
+            </mat-optgroup>
+            <mat-optgroup label="California" style="color:#585252">
+              <mat-option *ngFor="let cityCal of citCal" [value]="cityCal" style="margin-left:22px">
+                {{cityCal}}
+              </mat-option>
+            </mat-optgroup>
+            <mat-optgroup label="Illinois" style="color:#585252">
+              <mat-option *ngFor="let citIli of cityIli" [value]="citIli" style="margin-left:22px">
+                {{citIli}}
+              </mat-option>
+            </mat-optgroup>
+            <mat-optgroup label="Texas" style="color:#585252">
+              <mat-option *ngFor="let texas of citTexas" [value]="texas" style="margin-left:22px">
+                {{texas}}
+              </mat-option>
+            </mat-optgroup>
+            <mat-optgroup label="Pennsylvania" style="color:#585252">
+              <mat-option *ngFor="let penny of citPen" [value]="penny" style="margin-left:22px">
+                {{penny}}
+              </mat-option>
+            </mat-optgroup>
+            <mat-optgroup label="Arizona" style="color:#585252">
+              <mat-option *ngFor="let arizon of citAri" [value]="arizon" style="margin-left:22px">
+                {{arizon}}
+              </mat-option>
+            </mat-optgroup>
+            <mat-optgroup label="Florida" style="color:#585252">
+              <mat-option *ngFor="let flo of citFlo" [value]="flo" style="margin-left:22px">
+                {{flo}}
+              </mat-option>
+            </mat-optgroup>
+            <mat-optgroup label="Indiana" style="color:#585252">
+              <mat-option *ngFor="let ind of citInd" [value]="ind" style="margin-left:22px">
+                {{ind}}
+              </mat-option>
+            </mat-optgroup>
+            <mat-optgroup label="Ohio" style="color:#585252">
+              <mat-option *ngFor="let ohi of citOhio" [value]="ohi" style="margin-left:22px">
+                {{ohi}}
+              </mat-option>
+            </mat-optgroup>
+            <mat-optgroup label="North Carolina" style="color:#585252">
+              <mat-option *ngFor="let nc of citNC" [value]="nc" style="margin-left:22px">
+                {{nc}}
+              </mat-option>
+            </mat-optgroup>
+            <mat-optgroup label="Michigan" style="color:#585252">
+              <mat-option *ngFor="let mc of citMichi" [value]="mc" style="margin-left:22px">
+                {{mc}}
+              </mat-option>
+            </mat-optgroup>
+          </mat-select>
+
+        </mat-form-field>
+
+        <!-- <mat-form-field> -->
+        <div class="external-labels">
+          <label>9. Which age brackets are your followers in?</label>
+          <label *ngFor="let age of ages;let o = index" class="inner-labels">
+            <!-- formControlName="followerAge" -->
+            <input type="checkbox" [value]="age.value" (change)="fages($event,age.value,o)">
+            {{age.viewValue}}
+          </label>
+        </div>
+        <!-- </mat-form-field> -->
+        <!-- <mat-form-field> -->
+        <div class="external-labels">
+          <label>10. What percentage of your followers are Male vs. Female vs. Other.</label>
+          <label>Male <input type="text" style="margin-left:32px" (keypress)=_keyPressDec2($event)
+              formControlName="malePer" min="0" max="100">
+
+          </label>
+          <label>Female <input type="text" style="margin-left:15px" (keypress)=_keyPressDec2($event)
+              formControlName="femalePer" min="0" max="100"></label>
+          <label>Others <input type="text" style="margin-left:20px" (keypress)=_keyPressDec2($event)
+              formControlName="otherPer" min="0" max="100"></label>
+        </div>
+        <!-- </mat-form-field> -->
+
+        <mat-form-field>
+          <label>11. How many kids do you have that you would be willing to feature?</label>
+          <input matInput (keypress)=_keyPressDec($event) formControlName="kids">
+        </mat-form-field>
+        <mat-form-field>
+          <label>12. What are their ages? Please separate ages by commas. Leave empty if 0</label>
+          <input matInput (keypress)=_keyPressDec($event) formControlName="kidsAges">
+        </mat-form-field>
+
+        <!-- <mat-form-field> -->
+        <div class="external-labels">
+          <label>13. Do you have any pets that you would be willing to feature?</label>
+          <label>Number of dogs: <input type="text" style="margin-left: 61px;" (keypress)=_keyPressDec($event)
+              formControlName="dogs">
+
+          </label>
+          <label>Number of cats: <input type="text" style="margin-left: 66px;" (keypress)=_keyPressDec($event)
+              formControlName="cats"></label>
+          <label>Number of other animals: <input type="text" (keypress)=_keyPressDec($event)
+              formControlName="otherAnimal"></label>
+        </div>
+        <!-- </mat-form-field> -->
+
+        <!-- <mat-form-field> -->
+        <div class="external-labels">
+          <label>14. Do you have a significant other that is willing to be featured on your
+            page?</label>
+          <label *ngFor="let will of wills" class="inner-labels">
+            <input type="radio" [value]="will" formControlName="will">
+            {{will}}
+          </label>
+        </div>
+        <!-- </mat-form-field> -->
+        <div class="external-labels">
+          <label>15. What types of travel would you be interested in? Choose any many as
+            apply.</label>
+          <label *ngFor="let travel of typeTravel;let i = index" class="inner-labels">
+            <!-- formControlName="followerAge" -->
+            <input type="checkbox" (change)="travelType($event,travel,i)" [value]="travel">
+            {{travel}}
+          </label>
+        </div>
+
+        <div class="external-labels">
+          <label>16. What type of room do you prefer?</label>
+          <label *ngFor="let room of rooms" class="inner-labels">
+            <input type="radio" [value]="room" formControlName="room">
+            {{room}}
+          </label>
+        </div>
+
+        <div class="external-labels">
+          <label>17. What kind of food/drinks do you like? Choose any many as apply.</label>
+          <label *ngFor="let food of foods;let i = index" class="inner-labels">
+            <!--  -->
+            <input type="checkbox" (change)="foodType($event,food,i)" [value]="food">
+            {{food}}
+            <input *ngIf="food == 'Others, Please specify here'" type="text" formControlName="food">
+          </label>
+        </div>
+
+        <mat-form-field>
+          <label>18. Which brands would you be interested in working with?</label>
+          <textarea class="textnosize" matInput formControlName="brandWork"></textarea>
+        </mat-form-field>
+
+        <mat-form-field>
+          <label>19. Which brands would you never work with?</label>
+          <textarea class="textnosize" matInput formControlName="brandNoWork"></textarea>
+        </mat-form-field>
+
+        <mat-form-field>
+          <label>20. Please provide a short bio for brands.</label>
+          <textarea class="textnosize" matInput formControlName="bio"></textarea>
+        </mat-form-field>
+
+        <mat-form-field>
+          <label>21. What has been your favorite brand to work with so far and why?</label>
+          <textarea class="textnosize" matInput formControlName="favBrand"></textarea>
+        </mat-form-field>
+
+      </form>
+    </div>
+
+
+    <!-- Copyright 2019 Google Inc. All Rights Reserved.
+                    Use of this source code is governed by an MIT-style license that
+                    can be found in the LICENSE file at http://angular.io/license -->
+  </div>
+  <div class="modal-footer">
+    <!--  [disabled]="influencerSurveyForm.invalid || formPer" -->
+    <button type="submit" class="btn btn-set" data-dismiss="modal" (click)="submitSurvey()">Submit</button>
+  </div>
+</div>
+<div *ngIf="data.type == 'msg'" id="mainDiv">
+  <div (click)="onNoClick()">
+    <img class="imageM" src="assets/image/close.png">
+  </div>
+  <div class="modal-header">
+    <h4 class="modal-title">Send Message</h4>
+    <!-- <button (click)="close()" type="button" class="close" data-dismiss="modal">&times;</button> -->
+  </div>
+  <form name="messageForm" [formGroup]="messageForm" class="formMsg">
+    <mat-label class="emailLabel">To: <span>{{data.email}}</span></mat-label>
+    <mat-label>Title</mat-label>
+    <mat-form-field appearance="outline" floatLabel="always" class="w-100-p">
+
+      <input matInput placeholder="Enter title" name="title" formControlName="title" maxLength="50" required>
+    </mat-form-field>
+    <mat-label>Body</mat-label>
+    <mat-form-field appearance="outline" floatLabel="always" class="w-100-p">
+
+      <textarea class="textnosize" matInput placeholder="Enter message" maxLength="1000" name="body"
+        formControlName="body" rows="12" required>
+        </textarea>
+    </mat-form-field>
+  </form>
+
+  <button mat-button (click)='sendMsg()' class="sendBtn" [disabled]="messageForm.invalid || dis">Send</button>
+
+</div>
+<div *ngIf="data.type == 'review'" id="mainDiv">
+  <div (click)="onNoClick()">
+    <img class="imageM" src="assets/image/close.png">
+  </div>
+  <div class="modal-header">
+    <h4 class="modal-title">Reviews & Ratings</h4>
+    <!-- <button (click)="close()" type="button" class="close" data-dismiss="modal">&times;</button> -->
+  </div>
+  <form name="reviewForm" [formGroup]="reviewForm" class="formMsg">
+    <span>Rate</span>
+    <div style="display: flex;">
+      <fieldset class="rating">
+        <input type="radio" formControlName="rate" value="5" (change)='onClick(5)' [checked]="rating===5" />
+        <label title="Rocks!" (click)='onClick(5)'>5 stars</label>
+
+        <input type="radio" formControlName="rate" (change)='onClick(4)' value="4" [checked]="rating===4" />
+        <label title="Pretty good" (click)='onClick(4)'>4 stars</label>
+
+        <input type="radio" formControlName="rate" (change)='onClick(3)' value="3" [checked]="rating===3" />
+        <label title="Meh" (click)='onClick(3)'>3 stars</label>
+
+        <input type="radio" formControlName="rate" value="2" (change)='onClick(2)' [checked]="rating===2" />
+        <label title="Kinda bad" (click)='onClick(2)'>2 stars</label>
+
+        <input type="radio" formControlName="rate" value="1" (change)='onClick(1)' [checked]="rating===1" />
+        <label title="Sucks big time" (click)='onClick(1)'>1 star</label>
+      </fieldset>
+    </div>
+    <mat-label>Review</mat-label>
+    <mat-form-field appearance="outline" floatLabel="always" class="w-100-p">
+
+      <textarea style="resize: none;" maxLength="300" matInput placeholder="Write your reviews here.." name="review"
+        formControlName="review" rows="12">
+          </textarea>
+    </mat-form-field>
+  </form>
+
+  <button mat-button (click)='rate()' class="sendBtn" [disabled]="rating == 0">Send</button>
+
+</div>

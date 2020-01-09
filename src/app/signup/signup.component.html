@@ -1,0 +1,160 @@
+<div id="wrapper">
+  <div class="login-form signup-form">
+    <div class="show-web-app">
+      <div class="show-inner-app">
+        <div class="container container-slider">
+          <div class="slide-logo"><img src="assets/image/logo01.png"></div>
+          <div id="myCarousel" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+              <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+              <li data-target="#myCarousel" data-slide-to="1"></li>
+              <li data-target="#myCarousel" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner">
+              <div class="item slide01 active"></div>
+              <div class="item slide02"></div>
+              <div class="item slide03"></div>
+            </div>
+            <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+              <span class="glyphicon glyphicon-chevron-left"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control" href="#myCarousel" data-slide="next">
+              <span class="glyphicon glyphicon-chevron-right"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="get-the-app">
+      <div class="login">
+        <div class="outer-circle01"></div>
+        <div class="outer-circle03"></div>
+        <div class="outer-circle04"></div>
+        <div class="logo text-center"><img src="assets/image/logo01.png"></div>
+        <h3 class="text-center">Choose User Type</h3>
+        <ul class="choose-user">
+          <li class="brand-id"><label>
+              <div><img src="assets/image/icon_brand.png" alt="img"></div>Brand
+            </label></li>
+          <li class="influence-id"><label>
+              <div><img src="assets/image/icon_influencer.png" alt="img"></div>Influencer
+            </label></li>
+        </ul>
+        <div class="brand-orgnization">
+          <h6>Register an organization</h6>
+          <form name="Form">
+            <div class="form-group">
+              <label>Organization Name</label>
+              <input type="text" class="form-control" [(ngModel)]="orgName" #ngModel name="name" required>
+            </div>
+            <button type="button" [disabled]="checkOrgName()" (click)='checkOrgStatus()'>Create</button>
+          </form>
+        </div>
+        <div *ngIf='isBrand' class="brand-under-orgnization">
+          <h6>Sign Up as a brand account</h6>
+          <form name="brandForm" [formGroup]="brandForm" (ngSubmit)="brandFormSubmit()" autocomplete="off" novalidate>
+            <div class="form-group">
+              <label>Email</label>
+              <input type="email" name="email" formControlName="email" required>
+
+              <span *ngIf="b['email'].touched && b['email'].errors">
+                <p class="text-danger" *ngIf="b['email'].errors.required">
+                  Email is Required
+                </p>
+                <p class="text-danger" *ngIf="b['email'].errors.pattern">
+                  Invalid Email Address
+                </p>
+              </span>
+            </div>
+            <div class="form-group">
+              <label>Password</label>
+              <input type="Password" name="password" formControlName="password"
+                placeholder="Must Be Alphanumeric Minimum 8 characters"
+                onKeyDown="if(event.keyCode === 32) return false;" required>
+              <span *ngIf=" b['password'].touched && b['password'].errors">
+                <p class="text-danger" *ngIf="b['password'].errors.required">
+                  Password is Required
+                </p>
+                <p class="text-danger" *ngIf="b['password'].errors.pattern">
+                  Password should be Alphanumeric Min. 8 characters
+                </p>
+              </span>
+            </div>
+            <div class="form-group">
+              <label>Organization Name</label>
+              <input readonly type="text" name="name" formControlName="name" required="required">
+            </div>
+            <div class="form-group">
+              <label>Organization Key</label>
+              <input readonly type="text" name="orgKey" formControlName="orgKey" required="required">
+            </div>
+            <div class="check-turms">
+              <input type="checkbox" formControlName="termsCheck" name="check"> I accept the
+              <a class="privacy" (click)="terms('terms')">Terms of Use</a>
+              & <a class="privacy" (click)="terms('policy')"> Privacy Policy</a>
+            </div>
+            <button type="submit" [disabled]='brandForm.invalid || !brandForm.value.termsCheck'>Sign Up</button>
+          </form>
+        </div>
+        <div class="influence_user">
+          <h6>Sign Up as an Influencer Account</h6>
+          <form name='influencerForm' [formGroup]="influencerForm" (ngSubmit)="addInfluencer()" autocomplete="off"
+            novalidate>
+            <div class="form-group">
+              <label>Email</label>
+              <input type="email" name="email" formControlName="email" required="required">
+            </div>
+            <span *ngIf=" i['email'].touched && i['email'].errors">
+              <p class="text-danger" *ngIf="i['email'].errors.required">
+                Email is required
+              </p>
+              <p class="text-danger" *ngIf="i['email'].errors.pattern">
+                Invalid Email Address
+              </p>
+            </span>
+            <div class="form-group">
+              <label>Password</label>
+              <input type="Password" name="password" formControlName="password"
+                onKeyDown="if(event.keyCode === 32) return false;" required="required">
+            </div>
+            <span *ngIf=" i['password'].touched && i['password'].errors">
+              <p class="text-danger" *ngIf="i['password'].errors.required">
+                Password is required
+              </p>
+              <p class="text-danger" *ngIf="i['password'].errors.pattern">
+                Password should be Alphanumeric Min. 8 characters
+              </p>
+            </span>
+            <div class="check-turms">
+              <input type="checkbox" formControlName="termsCheck" name="check"> I accept the <a class="privacy"
+                (click)="terms('terms')">Terms of
+                Use</a> & <a class="privacy" (click)="terms('policy')"> Privacy Policy</a>
+            </div>
+            <button type="submit" [disabled]='influencerForm.invalid || !influencerForm.value.termsCheck'>Sign
+              Up</button>
+          </form>
+          <ul class="social-icons">
+            <li><a href="javascript: void(0);"><i [routerLink]="['/social_account','facebook']"
+                  class="fab fa-facebook"></i></a></li>
+            <li><a href="javascript: void(0);"><i [routerLink]="['/social_account','twitter']"
+                  class="fab fa-twitter"></i></a></li>
+            <li><a href="javascript: void(0);"><i [routerLink]="['/social_account','google']"
+                  class="fab fa-google-plus"></i></a></li>
+            <li><a href="javascript: void(0);"><i [routerLink]="['/social_account','instagram']"
+                  class="fab fa-instagram"></i></a></li>
+            <li><a href="javascript: void(0);"><i [routerLink]="['/social_account','youtube']"
+                  class="fab fa-youtube"></i></a></li>
+          </ul>
+        </div>
+        <div class="create-link text-center">Already have an account? <a style="cursor:pointer"
+            [routerLink]="['/login']">Log In here.</a></div>
+      </div>
+      <div class="get-app">
+        <a href="javascript: void(0);"><img src="assets/image/google.png" alt="image"></a>
+        <a href="javascript: void(0);"><img src="assets/image/apple.png" alt="image"></a>
+      </div>
+    </div>
+  </div>
+</div>

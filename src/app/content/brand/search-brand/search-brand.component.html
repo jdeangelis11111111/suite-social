@@ -1,0 +1,247 @@
+<!-- <div class="spinner" *ngIf="isModuleLoading">
+  <div class="double-bounce1 mat-bg-primary" style="background: wheat;"></div>
+  <div class="double-bounce2 mat-bg-accent" style="background: #EA3441;"></div>
+</div> -->
+<div class="simple-box" id="brand-box">
+  <div class="breadcrum-heading">
+    <h3 class="h3-basic-comman">Influencer Finder</h3>
+    <div class="page-breadcrumb">
+      <!--  <nav>
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Dashboard</a></li> |
+              <li class="breadcrumb-item active" aria-current="page">Influencer Finder Template</li>
+            </ol>
+          </nav> -->
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+      <div class="white-card">
+        <form class="input-form">
+          <input class="form-control form-control-lg" type="search" (keyup)="applyFilter($event.target.value)"
+            placeholder="Search By Influencer Name / City" aria-label="Search">
+          <button mat-button class="btn btn-primary search-btn" type="submit" (click)="check()">Search</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="row search-influencers">
+    <div class="col-xl-9 col-lg-8 col-md-8 col-sm-12 col-12 left-side-box">
+      <!-- <div class="app-loader">
+
+      </div> -->
+      <div *ngIf="showNoRecords" style="color: grey;margin-left: 5px;">No influencers found</div>
+      <div class="white-card-board" *ngFor="let data of influencers">
+        <div class="top-details">
+          <div class="user-details-serach">
+            <div class="user-avatar">
+              <img src="assets/image/icon_influencer.png" alt="img">
+            </div>
+            <div class="total-details">
+              <div class="name-user-rate">
+                <div class="user-avatar-name">
+                  <h2 style="text-transform: capitalize;">{{data.yourName}}</h2>
+                </div>
+                <div class="rating-star">
+                  <mat-icon *ngIf="data.averageRating >= 1" class="starRate">star</mat-icon>
+                  <mat-icon *ngIf="data.averageRating > 1 && data.averageRating < 2" class="starRate">star_half
+                  </mat-icon>
+                  <mat-icon *ngIf="data.averageRating >= 2" class="starRate">star</mat-icon>
+                  <mat-icon *ngIf="data.averageRating > 2 && data.averageRating < 3" class="starRate">star_half
+                  </mat-icon>
+                  <mat-icon *ngIf="data.averageRating >= 3" class="starRate">star</mat-icon>
+                  <mat-icon *ngIf="data.averageRating > 3 && data.averageRating < 4" class="starRate">star_half
+                  </mat-icon>
+                  <mat-icon *ngIf="data.averageRating >= 4" class="starRate">star</mat-icon>
+                  <mat-icon *ngIf="data.averageRating > 4 && data.averageRating < 5" class="starRate">star_half
+                  </mat-icon>
+                  <mat-icon *ngIf="data.averageRating >= 5" class="starRate">star</mat-icon>
+                  <mat-icon *ngIf="data.averageRating == 0" class="starRate">star_border</mat-icon>
+                  <mat-icon *ngIf="data.averageRating <= 1" class="starRate">star_border</mat-icon>
+                  <mat-icon *ngIf="data.averageRating <= 2" class="starRate">star_border</mat-icon>
+                  <mat-icon *ngIf="data.averageRating <= 3" class="starRate">star_border</mat-icon>
+                  <mat-icon *ngIf="data.averageRating <= 4" class="starRate">star_border</mat-icon>
+                  <p class="d-inline-block text-dark" style="display: inline;">
+                    ( {{data.totalRating}} Reviews) </p>
+                </div>
+
+                <div class="user-avatar-address">
+                  <p>
+                    <mat-icon class="locate">room</mat-icon>US
+                    <span>{{data.infl.email}}</span>
+                    <!-- <span class="m-l-10">Male
+                        <span class="m-l-20">29 Year Old</span>
+                      </span> -->
+                  </p>
+                  <div class="label-lists">
+                    <a *ngIf="data.topicYouPost" class="badge">{{data.topicYouPost}}</a>
+                    <a *ngIf="data.platformYouUse" class="badge">{{data.platformYouUse}}</a>
+                    <!-- <a *ngIf="data.typeOfTravel" class="badge">{{data.typeOfTravel}}</a> -->
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="search-user-msg">
+            <!--  <a href="#" class="btn-wishlist">
+                  <mat-icon class="starRate">star</mat-icon>
+                </a> -->
+            <a class="send-msg-btn" (click)="review(data.infl.email)">Review/ Rate</a>
+            <a class="send-msg-btn" (click)="sendMsg(data.infl.email)">Contact</a>
+            <a class="send-msg-btn" (click)="pay(data.infl.email)">Pay</a>
+          </div>
+        </div>
+        <div class="user-social-media">
+          <ul>
+            <li *ngIf="data.youtubeFollowers != ''"><img class="imageIcon"
+                src="assets/icons/youtube.png"><span>{{data.youtubeFollowers}} ({{data.youtubePriceRange}})</span></li>
+            <li *ngIf="data.youtubeFollowers == ''"><img class="imageIcon" src="assets/icons/youtube.png"><span>0</span>
+            </li>
+
+            <li *ngIf="data.facebookFollowers != ''"><img class="imageIcon"
+                src="assets/icons/fb.png"><span>{{data.facebookFollowers}} ({{data.facebookPriceRange}})</span></li>
+            <li *ngIf="data.facebookFollowers == ''"><img class="imageIcon" src="assets/icons/fb.png"><span>0</span>
+            </li>
+
+            <li *ngIf="data.twitterFollowers != ''"><img class="imageIcon"
+                src="assets/icons/tweet.png"><span>{{data.twitterFollowers}} ({{data.twitterPriceRange}})</span></li>
+            <li *ngIf="data.twitterFollowers == ''"><img class="imageIcon" src="assets/icons/tweet.png"><span>0</span>
+            </li>
+            <li *ngIf="data.instagramFollowers != ''"><img class="imageIcon"
+                src="assets/icons/insta.jpg"><span>{{data.instagramFollowers}} ({{data.instagramPriceRange}})</span>
+            </li>
+            <li *ngIf="data.instagramFollowers == ''"><img class="imageIcon" src="assets/icons/insta.jpg"><span>0</span>
+            </li>
+            <li *ngIf="data.blogFollowers != ''"><img class="imageIcon"
+                src="assets/icons/blog.jpg"><span>{{data.blogFollowers}} ({{data.blogPriceRange}})</span></li>
+            <li *ngIf="data.blogFollowers == ''"><img class="imageIcon" src="assets/icons/blog.jpg"><span>0</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-3 col-lg-4 col-md-4 col-sm-12 col-12 right-side-box">
+      <form name="filterFormB" [formGroup]="filterFormB">
+        <div class="white-card adjust-card">
+          <!-- <h3 class="h3-basic-comman01">Sorting By </h3> -->
+
+          <!-- <h3 class="h3-basic-comman01">Influncer by Rating</h3> -->
+          <!-- <h3 class="h3-basic-comman01">Social Media Platform</h3> -->
+          <h3 class="h3-basic-comman01">Influencer By Rating</h3>
+          <div class="label-sets">
+            <label *ngFor="let mc of rating;let i =index" class="inner-labels">
+              <!-- formControlName="categPro"formControlName="topic" -->
+              <input type="radio" formControlName="rate" [value]="mc.value">
+              <mat-icon class="star-icon">star</mat-icon>
+              <mat-icon *ngIf="mc.value > '1'" class="star-icon">star</mat-icon>
+              <mat-icon *ngIf="mc.value > '2'" class="star-icon">star</mat-icon>
+              <mat-icon *ngIf="mc.value > '3'" class="star-icon">star</mat-icon>
+              <mat-icon *ngIf="mc.value > '4'" class="star-icon">star</mat-icon>
+
+
+            </label>
+          </div>
+          <h3 class="h3-basic-comman01">Post Topics</h3>
+          <div class="label-sets">
+            <label *ngFor="let mc of opts;let i =index" class="inner-labels">
+              <!-- formControlName="categPro"formControlName="topic" -->
+              <input type="checkbox" (change)="topics($event,mc,i)" [value]="mc">
+              {{mc}}
+              <form name="postForm" [formGroup]="postForm">
+                <input *ngIf="mc == 'Others'" formControlName="topic" class="otheropt" type="text">
+              </form>
+            </label>
+          </div>
+          <!-- <h3 class="h3-basic-comman01">Overall Budget</h3>
+          <input class="inputBud" matInput (keypress)=_keyPressDec($event)> -->
+          <h3 class="h3-basic-comman01">Platforms</h3>
+          <div class="label-sets">
+            <div *ngFor="let plat of platforms;let i=index">
+              <input type="checkbox" (change)="addPlat($event,plat,i)" [value]="plat"> {{plat}}
+              <label class="inner-labels">
+                <mat-select [disabled]="qty[i] ? null : true" formControlName="follow"
+                  (selectionChange)="addPlatNo($event,i)" class="form-control" id="">
+                  <!-- multiple -->
+                  <!--   [(ngModel)]="qty[ind]" -->
+                  <mat-option [value]="categ.value" *ngFor="let categ of range">{{categ.viewValue}}
+                  </mat-option>
+                </mat-select>
+              </label></div>
+          </div>
+          <h3 class="h3-basic-comman01">City</h3>
+          <mat-select class="cityDrop" placeholder="Select City" formControlName="city" (selectionChange)="city($event)"
+            multiple>
+            <!-- <mat-option [value]="city" *ngFor="let city of cities"><label>
+                {{city}}</label></mat-option> -->
+            <mat-optgroup label="New York" style="color:#585252">
+              <mat-option *ngFor="let citNY of cit" [value]="citNY" style="margin-left:22px">
+                {{citNY}}
+              </mat-option>
+            </mat-optgroup>
+            <mat-optgroup label="California" style="color:#585252">
+              <mat-option *ngFor="let cityCal of citCal" [value]="cityCal" style="margin-left:22px">
+                {{cityCal}}
+              </mat-option>
+            </mat-optgroup>
+            <mat-optgroup label="Illinois" style="color:#585252">
+              <mat-option *ngFor="let citIli of cityIli" [value]="citIli" style="margin-left:22px">
+                {{citIli}}
+              </mat-option>
+            </mat-optgroup>
+            <mat-optgroup label="Texas" style="color:#585252">
+              <mat-option *ngFor="let texas of citTexas" [value]="texas" style="margin-left:22px">
+                {{texas}}
+              </mat-option>
+            </mat-optgroup>
+            <mat-optgroup label="Pennsylvania" style="color:#585252">
+              <mat-option *ngFor="let penny of citPen" [value]="penny" style="margin-left:22px">
+                {{penny}}
+              </mat-option>
+            </mat-optgroup>
+            <mat-optgroup label="Arizona" style="color:#585252">
+              <mat-option *ngFor="let arizon of citAri" [value]="arizon" style="margin-left:22px">
+                {{arizon}}
+              </mat-option>
+            </mat-optgroup>
+            <mat-optgroup label="Florida" style="color:#585252">
+              <mat-option *ngFor="let flo of citFlo" [value]="flo" style="margin-left:22px">
+                {{flo}}
+              </mat-option>
+            </mat-optgroup>
+            <mat-optgroup label="Indiana" style="color:#585252">
+              <mat-option *ngFor="let ind of citInd" [value]="ind" style="margin-left:22px">
+                {{ind}}
+              </mat-option>
+            </mat-optgroup>
+            <mat-optgroup label="Ohio" style="color:#585252">
+              <mat-option *ngFor="let ohi of citOhio" [value]="ohi" style="margin-left:22px">
+                {{ohi}}
+              </mat-option>
+            </mat-optgroup>
+            <mat-optgroup label="North Carolina" style="color:#585252">
+              <mat-option *ngFor="let nc of citNC" [value]="nc" style="margin-left:22px">
+                {{nc}}
+              </mat-option>
+            </mat-optgroup>
+            <mat-optgroup label="Michigan" style="color:#585252">
+              <mat-option *ngFor="let mc of citMichi" [value]="mc" style="margin-left:22px">
+                {{mc}}
+              </mat-option>
+            </mat-optgroup>
+          </mat-select>
+          <h3 class="h3-basic-comman01">Age</h3>
+          <div class="label-sets">
+            <label *ngFor="let age of ages;let o = index" class="inner-labels">
+              <input type="checkbox" [value]="age.value" (change)="fages($event,age.value,o)">
+              {{age.viewValue}}
+            </label>
+          </div>
+          <div class="sub">
+            <a class="send-msg-btn" mat-button (click)="check()">Submit</a>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

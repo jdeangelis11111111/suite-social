@@ -1,0 +1,131 @@
+<mat-sidenav-container>
+  <!-- Inbox left side bar -->
+  <!--   <mat-sidenav #sidenav [opened]="isSidenavOpen" mode="side" class="inbox-sidenav">
+   <button mat-raised-button class="mat-warn full-width sideBtn" (click)="openComposeDialog()">Social Suite
+      Messages</button>
+    <mat-nav-list class="inbox-nav-list" role="list">
+      <mat-list-item class="primary-imenu-item" role="listitem" (click)="view('inbox')" routerLinkActive="open">
+        <a fxLayout="row">
+          <mat-icon class="text-muted">inbox</mat-icon>
+          <span>Inbox</span>
+        </a>
+      </mat-list-item>
+
+      <mat-list-item class="primary-imenu-item" (click)="view('sent')" role="listitem" routerLinkActive="open">
+        <a fxLayout="row">
+          <mat-icon class="text-muted">send</mat-icon>
+          <span>Sent</span>
+        </a>
+      </mat-list-item>
+    </mat-nav-list>
+  </mat-sidenav> -->
+  <div *ngIf="!showDetailMsg">
+    <div class="messages-wrap">
+      <mat-toolbar color="primary" class="inbox-toolbar inboxBrand">
+        <!--   <mat-checkbox (change)="selectToggleAll()" class="inbox-toggle-all mr-1 checkAll"><small>All</small>
+      </mat-checkbox> -->
+        <span class="inbox-head">
+          <!--  <mat-icon>inbox</mat-icon> {{typeMsg}}-->Messages
+        </span>
+        <!--  <button mat-icon-button matTooltip="Delete All Messages" class="deleteAll" (click)="deleteAll()">
+          <mat-icon>delete</mat-icon>
+        </button> -->
+        <!--  <button mat-icon-button matTooltip="Mark as important" class="">
+        <mat-icon>folder_special</mat-icon>
+      </button>
+      <button mat-icon-button matTooltip="Move to archive">
+        <mat-icon>archive</mat-icon>
+      </button>
+      <button mat-icon-button matTooltip="Report spam">
+        <mat-icon>error</mat-icon>
+      </button> -->
+      </mat-toolbar>
+      <!-- <div *ngIf="showInboxDiv"> -->
+      <div *ngIf="showNoRecords" style="color: grey;margin: 5px;">No messages found</div>
+      <div *ngIf="!showNoRecords">
+        <div *ngFor="let message of messages" class="messageList" (click)="goToMsg(message)">
+
+          <!--   <mat-checkbox [(ngModel)]="message.selected" (click)="stopProp($event)"
+          class="mail-checkbox hide-on-open msgCheckBox">
+        </mat-checkbox> -->
+          <div class="">
+            <span class="" *ngIf="message.unreadMessagesCount != 0">{{message.unreadMessagesCount}}</span>
+          </div>
+          <div class="nameInbox">
+            <span class="hide-on-open">{{message.email}}</span>
+          </div>
+
+          <span class="mail-subject text-sm mat-color-default msgLatest">{{message.latestMessage}}</span>
+          <span fxFlex></span>
+          <span class="text-sm timeMSG" fxHide.lt-sm="true">{{message.timeStamp | date }}</span>
+          <button mat-icon-button [matMenuTriggerFor]="msgMenu" (click)="$event.stopPropagation()"
+            class="hidden-on-open">
+            <mat-icon class="text-muted">more_vert</mat-icon>
+          </button>
+          <mat-menu #msgMenu="matMenu">
+            <button mat-menu-item (click)="reply(message.email)">
+              <mat-icon>reply</mat-icon> Reply
+            </button>
+            <button mat-menu-item (click)="delete(message)">
+              <mat-icon>delete</mat-icon> Delete
+            </button>
+          </mat-menu>
+          <hr>
+        </div>
+      </div>
+      <!-- </div> -->
+    </div>
+  </div>
+
+  <div *ngIf="showDetailMsg">
+    <div class="messages-wrap">
+      <mat-toolbar color="primary" class="inbox-toolbar inboxBrand">
+        <!--   <mat-checkbox (change)="selectToggleAll()" class="inbox-toggle-all mr-1 checkAll"><small>All</small>
+        </mat-checkbox> -->
+        <span class="inbox-head">
+          <mat-icon class="arrowback" (click)="goBack()">arrow_back</mat-icon>
+          <!--  <mat-icon>inbox</mat-icon> {{typeMsg}}--><span>{{fromEmail}}</span>
+        </span>
+      </mat-toolbar>
+
+      <mat-accordion>
+        <div *ngIf="showNoRecordsA" style="color: grey;margin: 5px;">No messages found</div>
+        <mat-expansion-panel [ngClass]="message.messageOutBounds == '1' ? 'sent':'receive'"
+          *ngFor="let message of messages2" hideToggle="true">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <span class="hide-on-open">{{message.from}}</span>
+              <div fxFlex="1 1 auto" fxLayout="row" fxLayoutAlign="start center" class="show-on-open">
+                <!-- <img [src]="message.sender.photo" alt="" class="inbox-face mr-1"> -->
+                <div fxLayout="column">
+                  <span class="m-0">{{message.from}}</span>
+                  <!-- <small class="text-muted m-0">{{message.timeStamp | date}}</small> -->
+                </div>
+              </div>
+            </mat-panel-title>
+            <mat-panel-description>
+              <span class="mail-subject text-sm mat-color-default">{{message.messageTitle}}</span>
+              <span fxFlex></span>
+              <span class="text-sm" fxHide.lt-sm="true">{{message.timeStamp | date}}</span>
+              <button mat-icon-button [matMenuTriggerFor]="msgMenu" (click)="$event.stopPropagation()"
+                class="hidden-on-open">
+                <mat-icon class="text-muted">more_vert</mat-icon>
+              </button>
+              <mat-menu #msgMenu="matMenu">
+                <button mat-menu-item (click)="reply(message.from)">
+                  <mat-icon>reply</mat-icon> Reply
+                </button>
+                <button mat-menu-item (click)="deleteD(message)">
+                  <mat-icon>delete</mat-icon> Delete
+                </button>
+              </mat-menu>
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+
+          <div class="message-text" [innerHTML]="message.messageBody"></div>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </div>
+  </div>
+
+</mat-sidenav-container>

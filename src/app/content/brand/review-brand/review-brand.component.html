@@ -1,0 +1,77 @@
+<mat-card>
+  <div class="content-card">
+
+    <mat-table class="review-table size" #table [dataSource]="dataSource" matSort>
+      <!-- ID Column -->
+      <ng-container matColumnDef="id">
+        <mat-header-cell *matHeaderCellDef>SNo.</mat-header-cell>
+        <!-- <mat-cell *matCellDef="let item; let j = index">
+                      {{ (j+1) + (paginator.pageIndex * paginator.pageSize) }}
+                  </mat-cell> -->
+        <mat-cell *matCellDef="let j = index">
+          {{ j+1 }}
+        </mat-cell>
+      </ng-container>
+
+
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="email">
+        <mat-header-cell *matHeaderCellDef>Influencer Email</mat-header-cell>
+        <mat-cell *matCellDef="let post">
+          <!--  <p class="text-truncate text-cases" [matTooltip]="post.campaignTitle"> -->
+          {{post.reviewerEmailId}}
+          <!--  </p> -->
+        </mat-cell>
+      </ng-container>
+
+
+      <!-- Price Column -->
+      <ng-container matColumnDef="review">
+        <mat-header-cell *matHeaderCellDef fxHide fxShow.gt-xs>Review</mat-header-cell>
+        <mat-cell *matCellDef="let post" fxHide fxShow.gt-xs>
+          <!-- <p [matTooltip]="post.aboutCampaigning"> -->{{post.reviewRemark}}
+          <!--  </p> -->
+        </mat-cell>
+      </ng-container>
+
+      <!-- Manufactured By Column -->
+      <ng-container matColumnDef="rate">
+        <mat-header-cell *matHeaderCellDef fxHide fxShow.gt-xs>Rating
+        </mat-header-cell>
+        <mat-cell *matCellDef="let post" class="text-cases" fxHide fxShow.gt-xs>
+          <mat-icon *ngIf="post.rating >= 1" class="starRate">star</mat-icon>
+          <mat-icon *ngIf="post.rating > 1 && post.rating < 2" class="starRate">star_half
+          </mat-icon>
+          <mat-icon *ngIf="post.rating >= 2" class="starRate">star</mat-icon>
+          <mat-icon *ngIf="post.rating > 2 && post.rating < 3" class="starRate">star_half
+          </mat-icon>
+          <mat-icon *ngIf="post.rating >= 3" class="starRate">star</mat-icon>
+          <mat-icon *ngIf="post.rating > 3 && post.rating < 4" class="starRate">star_half
+          </mat-icon>
+          <mat-icon *ngIf="post.rating >= 4" class="starRate">star</mat-icon>
+          <mat-icon *ngIf="post.rating > 4 && post.rating < 5" class="starRate">star_half
+          </mat-icon>
+          <mat-icon *ngIf="post.rating >= 5" class="starRate">star</mat-icon>
+          <mat-icon *ngIf="post.rating == 0" class="starRate">star_border</mat-icon>
+          <mat-icon *ngIf="post.rating <= 1" class="starRate">star_border</mat-icon>
+          <mat-icon *ngIf="post.rating <= 2" class="starRate">star_border</mat-icon>
+          <mat-icon *ngIf="post.rating <= 3" class="starRate">star_border</mat-icon>
+          <mat-icon *ngIf="post.rating <= 4" class="starRate">star_border</mat-icon>
+        </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns; sticky:true"></mat-header-row>
+
+      <mat-row *matRowDef="let post; columns: displayedColumns;" class="post">
+        <!-- matRipple -->
+      </mat-row>
+
+    </mat-table>
+    <div class="noReview" *ngIf="reviewList.length == 0">No reviews found</div>
+    <!-- [length]="resultsLength" -->
+    <!-- <mat-paginator #paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]">
+          </mat-paginator> -->
+
+  </div>
+</mat-card>

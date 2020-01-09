@@ -1,0 +1,245 @@
+<div class="simple-box" id="brand-box">
+    <div class="breadcrum-heading">
+        <h3 class="h3-basic-comman">Influencer Dashboard</h3>
+        <!-- <div class="page-breadcrumb">
+        </div> -->
+    </div>
+    <div class="row search-influencers infl-dash">
+        <div class="col-lg-12 left-side-box">
+
+            <div class="white-card-board">
+                <div class="top-details">
+                    <div class="user-details-serach">
+                        <div class="user-avatar">
+                            <img src="assets/image/icon_influencer.png" alt="img">
+                        </div>
+                        <div class="total-details">
+                            <div class="name-user-rate">
+                                <div class="user-avatar-name">
+                                    <h2 style="text-transform: capitalize;" *ngIf="data == undefined">NA</h2>
+                                    <h2 style="text-transform: capitalize;" *ngIf="data != undefined">{{data.yourName}}
+                                    </h2>
+                                    <div class="rating-star" *ngIf="data != undefined">
+                                        <mat-icon *ngIf="data.averageRating >= 1" class="starRate">star</mat-icon>
+                                        <mat-icon *ngIf="data.averageRating > 1 && data.averageRating < 2"
+                                            class="starRate">
+                                            star_half
+                                        </mat-icon>
+                                        <mat-icon *ngIf="data.averageRating >= 2" class="starRate">star</mat-icon>
+                                        <mat-icon *ngIf="data.averageRating > 2 && data.averageRating < 3"
+                                            class="starRate">
+                                            star_half
+                                        </mat-icon>
+                                        <mat-icon *ngIf="data.averageRating >= 3" class="starRate">star</mat-icon>
+                                        <mat-icon *ngIf="data.averageRating > 3 && data.averageRating < 4"
+                                            class="starRate">
+                                            star_half
+                                        </mat-icon>
+                                        <mat-icon *ngIf="data.averageRating >= 4" class="starRate">star</mat-icon>
+                                        <mat-icon *ngIf="data.averageRating > 4 && data.averageRating < 5"
+                                            class="starRate">
+                                            star_half
+                                        </mat-icon>
+                                        <mat-icon *ngIf="data.averageRating >= 5" class="starRate">star</mat-icon>
+                                        <mat-icon *ngIf="data.averageRating == 0" class="starRate">star_border
+                                        </mat-icon>
+                                        <mat-icon *ngIf="data.averageRating <= 1" class="starRate">star_border
+                                        </mat-icon>
+                                        <mat-icon *ngIf="data.averageRating <= 2" class="starRate">star_border
+                                        </mat-icon>
+                                        <mat-icon *ngIf="data.averageRating <= 3" class="starRate">star_border
+                                        </mat-icon>
+                                        <mat-icon *ngIf="data.averageRating <= 4" class="starRate">star_border
+                                        </mat-icon>
+                                        <p class="d-inline-block text-dark" style="display: inline;cursor: pointer;"
+                                            [routerLink]="'/content/influencer/review'">
+                                            ( {{data.totalRating}} Reviews) </p>
+                                    </div>
+                                    <div class="rating-star" *ngIf="data == undefined">
+                                        <mat-icon class="starRate">star_border</mat-icon>
+                                        <mat-icon class="starRate">star_border</mat-icon>
+                                        <mat-icon class="starRate">star_border</mat-icon>
+                                        <mat-icon class="starRate">star_border</mat-icon>
+                                        <mat-icon class="starRate">star_border</mat-icon>
+                                        <p class="d-inline-block text-dark" style="display: inline;cursor: pointer;"
+                                            [routerLink]="'/content/influencer/review'">
+                                            ( 0 Reviews) </p>
+                                    </div>
+                                </div>
+
+
+                                <div class="user-avatar-address">
+                                    <p>
+                                        <mat-icon class="locate">room</mat-icon>US
+                                        <span *ngIf="data != undefined">{{data.infl.email}}</span>
+                                        <span *ngIf="data != undefined">{{data.yourGender}}</span>
+                                        <!-- <span class="m-l-10">Male
+                          <span class="m-l-20">29 Year Old</span>
+                        </span> -->
+                                    </p>
+                                    <div class="label-lists">
+                                        <a class="badge"
+                                            *ngIf="data != undefined && data.topicYouPost != ''">{{data.topicYouPost}}</a>
+                                        <a class="badge"
+                                            *ngIf="data != undefined && data.platformYouUse != ''">{{data.platformYouUse}}</a>
+                                        <!-- <a *ngIf="data.typeOfTravel" class="badge">{{data.typeOfTravel}}</a> -->
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="user-social-media" *ngIf="data != undefined">
+                    <ul>
+                        <li *ngIf="data.youtubeFollowers != ''"><img class="imageIcon"
+                                src="assets/icons/youtube.png"><span>{{data.youtubeFollowers}}
+                                ({{data.youtubePriceRange}})</span>
+                        </li>
+                        <li *ngIf="data.youtubeFollowers == ''"><img class="imageIcon"
+                                src="assets/icons/youtube.png"><span>0</span></li>
+
+
+                        <li *ngIf="data.facebookFollowers != ''"><img class="imageIcon"
+                                src="assets/icons/fb.png"><span>{{data.facebookFollowers}}
+                                ({{data.facebookPriceRange}})</span></li>
+                        <li *ngIf="data.facebookFollowers == ''"><img class="imageIcon"
+                                src="assets/icons/fb.png"><span>0</span>
+                        </li>
+
+                        <li *ngIf="data.twitterFollowers != ''"><img class="imageIcon"
+                                src="assets/icons/tweet.png"><span>{{data.twitterFollowers}}
+                                ({{data.twitterPriceRange}})</span></li>
+                        <li *ngIf="data.twitterFollowers == ''"><img class="imageIcon"
+                                src="assets/icons/tweet.png"><span>0</span>
+                        </li>
+                        <li *ngIf="data.instagramFollowers != ''"><img class="imageIcon"
+                                src="assets/icons/insta.jpg"><span>{{data.instagramFollowers}}
+                                ({{data.instagramPriceRange}})</span>
+                        </li>
+                        <li *ngIf="data.instagramFollowers == ''"><img class="imageIcon"
+                                src="assets/icons/insta.jpg"><span>0</span></li>
+                        <li *ngIf="data.blogFollowers != ''"><img class="imageIcon"
+                                src="assets/icons/blog.jpg"><span>{{data.blogFollowers}}
+                                ({{data.blogPriceRange}})</span></li>
+                        <li *ngIf="data.blogFollowers == ''"><img class="imageIcon"
+                                src="assets/icons/blog.jpg"><span>0</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="user-social-media" *ngIf="data == undefined">
+                    <ul>
+                        <li><img class="imageIcon" src="assets/icons/youtube.png"><span>0</span></li>
+
+                        <li><img class="imageIcon" src="assets/icons/fb.png"><span>0</span>
+                        </li>
+
+                        <li><img class="imageIcon" src="assets/icons/tweet.png"><span>0</span>
+                        </li>
+
+                        <li><img class="imageIcon" src="assets/icons/insta.jpg"><span>0</span></li>
+
+                        <li><img class="imageIcon" src="assets/icons/blog.jpg"><span>0</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="fourBlogs">
+        <div class="boxes">
+            <div class="box-left-text">
+                <p>Total Views</p>
+                <span *ngIf="data != undefined">{{data.totalRating}}</span>
+                <span *ngIf="data == undefined">0</span>
+            </div>
+            <div class="box-img-text">
+                <mat-icon class="icon-set views">remove_red_eye</mat-icon>
+            </div>
+        </div>
+        <div class="boxes">
+            <div class="box-left-text">
+                <p>Total Followers</p>
+                <span>0</span>
+            </div>
+            <div class="box-img-text">
+                <mat-icon class="icon-set user">account_circle</mat-icon>
+            </div>
+        </div>
+        <div class="boxes">
+            <div class="box-left-text">
+                <p>Partnerships</p>
+                <span>0</span>
+            </div>
+            <div class="box-img-text">
+                <mat-icon class="icon-set partner">group</mat-icon>
+            </div>
+        </div>
+        <div class="boxes">
+            <div class="box-left-text">
+                <p>Total Earned</p>
+                <span>$0</span>
+            </div>
+            <div class="box-img-text">
+                <mat-icon class="icon-set dollar">monetization_on</mat-icon>
+            </div>
+        </div>
+    </div>
+    <!--     <div class="graphBlogs">
+        <div class="boxes bygender">
+            <h3>Followers By Gender</h3>
+            <div class="graph-dest">
+                <div echarts [options]="trafficSourcesChart" [autoResize]="true" style="height: 250px;"></div>
+            </div>
+        </div>
+        <div class="boxes byfollowers">
+            <h3>Followers By Age</h3>
+            <div class="graph-dest">
+                <div class="mb-1">
+                    <p class="m-0">
+                        Below 20 <span class="text-muted">| 90%</span>
+                    </p>
+                    <mat-progress-bar class="progress" color="warn" mode="determinate" [value]="90" class="rounded"
+                        style="height: 6px">
+                    </mat-progress-bar>
+                </div>
+                <div class="mb-1">
+                    <p class="m-0">
+                        20 - 30 <span class="text-muted">| 80%</span>
+                    </p>
+                    <mat-progress-bar class="progress" color="primary" mode="determinate" [value]="80" class="rounded"
+                        style="height: 6px">
+                    </mat-progress-bar>
+                </div>
+                <div class="mb-1">
+                    <p class="m-0">
+                        30 - 40 <span class="text-muted">| 60%</span>
+                    </p>
+                    <mat-progress-bar class="progress" color="accent" mode="determinate" [value]="60" class="rounded"
+                        style="height: 6px">
+                    </mat-progress-bar>
+                </div>
+                <div class="mb-1">
+                    <p class="m-0">
+                        40 and above <span class="text-muted">| 40%</span>
+                    </p>
+                    <mat-progress-bar class="progress" color="warn" mode="determinate" [value]="40" class="rounded"
+                        style="height: 6px">
+                    </mat-progress-bar>
+                </div>
+
+            </div>
+        </div>
+        <div class="boxes bylocation">
+            <h3>Top Followers By Location</h3>
+            <div class="graph-dest">
+                <ngx-charts-bar-vertical [view]="view" [scheme]="colorScheme" [results]="followByLocations"
+                    [gradient]="gradient" [xAxis]="showXAxis" [yAxis]="showYAxis" [showXAxisLabel]="showXAxisLabel"
+                    [showYAxisLabel]="showYAxisLabel" [yAxisLabel]="yAxisLabel">
+                </ngx-charts-bar-vertical>
+            </div>
+        </div>
+    </div> -->
+</div>

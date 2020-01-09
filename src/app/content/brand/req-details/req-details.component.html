@@ -1,0 +1,91 @@
+<mat-card>
+    <div class="btn-right">
+        <button mat-button class="set-btn-default" (click)="postC()">Post Campaign</button>
+    </div>
+
+    <div class="content-card">
+
+        <mat-table class="posts-table size" #table [dataSource]="dataSource" matSort>
+
+            <!-- ID Column -->
+            <ng-container matColumnDef="id">
+                <mat-header-cell *matHeaderCellDef>SNo.</mat-header-cell>
+                <!-- <mat-cell *matCellDef="let item; let j = index">
+                        {{ (j+1) + (paginator.pageIndex * paginator.pageSize) }}
+                    </mat-cell> -->
+                <mat-cell *matCellDef="let j = index">
+                    {{ j+1 }}
+                </mat-cell>
+            </ng-container>
+
+
+
+            <!-- Name Column -->
+            <ng-container matColumnDef="title">
+                <mat-header-cell *matHeaderCellDef>Campaign Title</mat-header-cell>
+                <mat-cell *matCellDef="let post">
+                    <!--  <p class="text-truncate text-cases" [matTooltip]="post.campaignTitle"> -->
+                    {{post.campaignTitle}}
+                    <!--  </p> -->
+                </mat-cell>
+            </ng-container>
+
+
+            <!-- Price Column -->
+            <ng-container matColumnDef="description">
+                <mat-header-cell *matHeaderCellDef fxHide fxShow.gt-xs>Campaign Description</mat-header-cell>
+                <mat-cell *matCellDef="let post" class="descPost" fxHide fxShow.gt-xs>
+                    <!-- <p [matTooltip]="post.aboutCampaigning"> -->{{post.aboutCampaigning}}
+                    <!--  </p> -->
+                </mat-cell>
+            </ng-container>
+
+            <!-- Manufactured By Column -->
+            <ng-container matColumnDef="active">
+                <mat-header-cell *matHeaderCellDef fxHide fxShow.gt-xs>Active
+                </mat-header-cell>
+                <mat-cell *matCellDef="let post" class="text-cases" fxHide fxShow.gt-xs>
+                    <!-- <mat-icon class="active" *ngIf="post.active">fiber_manual_record</mat-icon>
+                    <mat-icon class="inactive" *ngIf="!post.active">fiber_manual_record</mat-icon> -->
+                    <mat-icon [ngClass]="!post.active ? 'inactive':'active'">fiber_manual_record</mat-icon>
+                </mat-cell>
+            </ng-container>
+
+
+
+            <ng-container matColumnDef="edit">
+                <mat-header-cell *matHeaderCellDef>View</mat-header-cell>
+                <mat-cell *matCellDef="let element" (click)="$event.stopPropagation()"
+                    style="padding: 0 26px !important;">
+                    <!--   -->
+                    <button mat-button matTooltip="View" style="margin-left: -30px;outline: none;"
+                        (click)="editPost(element)">
+                        <mat-icon class="edit-color">remove_red_eye</mat-icon>
+                    </button>
+                </mat-cell>
+            </ng-container>
+
+            <!-- <ng-container matColumnDef="delete">
+                <mat-header-cell *matHeaderCellDef>Remove</mat-header-cell>
+                <mat-cell *matCellDef="let element" (click)="$event.stopPropagation()"
+                    style="padding: 0 10px !important">
+                   
+            <button mat-button matTooltip="Remove post" (click)="deletePost(element)" style="margin-left: -26px;">
+                <mat-icon class="del-color">delete</mat-icon>
+            </button>
+            </mat-cell>
+            </ng-container> -->
+
+            <mat-header-row *matHeaderRowDef="displayedColumns; sticky:true"></mat-header-row>
+
+            <mat-row *matRowDef="let post; columns: displayedColumns;" class="post">
+                <!-- matRipple -->
+            </mat-row>
+
+        </mat-table>
+        <!-- [length]="resultsLength" -->
+        <!-- <mat-paginator #paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]">
+            </mat-paginator> -->
+
+    </div>
+</mat-card>

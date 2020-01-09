@@ -1,0 +1,82 @@
+.delete-dialog {
+    background: #EA3441 !important;
+    color: #fff;
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+  }
+  .mainDiv {
+    margin: -24px;
+  }
+  .sendBtn{
+    background: #ea3441;
+    color: white;
+    float: right;
+    margin-right: 12px;
+  }
+  
+ .deleteAll{
+    background: #ea3441;
+    color: white;
+    padding: 6px;
+    text-align: center;
+  }
+  .mat-dialog-container {
+    padding: 0 !important;
+    overflow: hidden !important;
+    text-align: center;
+    border-radius: 15px !important;
+  }
+  .mat-dialog-title {
+   background: #ea3441!important;
+    margin: 0 0 10px !important;
+    padding: 30px 10px 40px;
+    padding:15px;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+    // border-top-left-radius: 15px;
+    // border-top-right-radius: 15px;
+  }
+  .mat-dialog-title::before {    
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: 20px;
+    // background: url('assets/images/dialog.png') no-repeat scroll bottom center / 100% 20px ;
+    left: 0;
+    bottom: 0;
+  }
+  .mat-dialog-content {
+    display: block;
+    margin: 0;
+    padding: 0 24px;
+    max-height: 100% !important;
+    overflow: none !important;
+    font-weight: bold;
+    color: #242020;
+  }
+  .mat-dialog-actions {
+    margin: 0 !important;
+    padding: 35px 15px !important;
+    justify-content: space-around;
+  }
+  .mat-dialog-actions button {
+    width: 45%;
+    height: 30px;
+    line-height: 30px;
+    border-radius: 20px;
+    // background: #fff;
+    color: #fff;
+    background: #ea3441;
+    box-shadow: 0px 2px 5px -4px #000;
+  }
+  .mat-dialog-actions button:nth-child(2) {
+    color: #fff !important;
+    background: linear-gradient(to right, #232b30 50%, #232b30) !important;
+  }
+  .mat-dialog-actions button:nth-child(1) {
+    color: #fff !important;
+    background: linear-gradient(to right, #232b30 50%, #232b30) !important;
+  }

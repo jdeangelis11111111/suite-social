@@ -1,0 +1,72 @@
+.inboxBrand{
+    background: #ea3441 !important;
+    color: white;
+    display: block;
+    line-height: 52px;
+}
+.checkAll{
+margin-left: 1px;
+}
+.messageList{
+background: #fff;
+border: 1px solid #eaeaea;
+line-height: 46px;
+cursor:pointer;
+height: 48px;
+font-family: Roboto, "Helvetica Neue", sans-serif;
+font-size: 15px;
+font-weight: 400;
+padding: 0 24px;
+}
+.accordion-msg{
+font-family: Roboto, "Helvetica Neue", sans-serif;
+font-size: 15px;
+font-weight: 400;
+
+}
+.messageList:hover{
+background: #efebeb;
+}
+.msgCheckBox{
+margin: 14px 5px 0 0 !important;
+}
+.nameInbox{
+min-width: 330px;
+}
+.inbox-head{
+
+}
+.sideBtn{
+background-color: #ea3441 !important;
+height: 56.5px;
+border-radius: 0%;
+cursor: default;
+}
+.timeMSG{
+    color: grey;
+    height: 50px;
+    white-space: nowrap;
+    /* overflow: hidden; */
+    text-overflow: ellipsis;
+}
+.deleteAll{
+    line-height: 52px;
+    float:right;
+}
+.arrowback{
+    cursor: pointer;
+    margin: 5px 6px 0 0;
+}
+.sent{
+    background: #ebe8e8;
+}
+.receive{
+    background: #efbfbf;
+}
+.msgLatest{
+    height: 50px;
+    white-space: nowrap;
+    margin-right: 5px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

@@ -1,0 +1,44 @@
+.pay-btns {
+    text-align: center;
+    max-width: 500px;
+    margin: 20px auto;
+    padding: 20px 20px 0;
+    background: #eaeaea4a;
+    border-radius: 6px;
+    box-shadow: 0 0 10px -7px #000;
+    border: 1px solid #eaeaea;
+}
+.input-paynumber {
+    border: 1px solid #eaeaea;
+    border-radius: 6px;
+    background: #fff;
+    height: 36px;
+    padding: 0 10px;
+    line-height: 34px;
+    text-align: center;
+    margin: 0 0 10px;
+}
+.data-pay-table {
+    width: 100%;
+    text-align: left;
+    border: 1px solid #eaeaea;
+    margin: 20px 0 20px;
+}
+.data-pay-table tr {
+    border-bottom: 1px solid #eaeaea;
+}
+.data-pay-table tr th {
+    padding: 5px 10px;
+}
+.payTo{
+    margin: 10px;
+}
+.paypal-powered-by{
+    display: none;
+}
+#black-credit-card-button {
+    background: #ea3441 !important;
+    color: #fff;
+    font-size: 1.15em;
+    border-radius: 4px !important;
+}

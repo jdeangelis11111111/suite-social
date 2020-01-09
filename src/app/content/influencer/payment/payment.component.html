@@ -1,0 +1,22 @@
+<mat-card>
+    <div class="pay-btns">
+        <div class="payTo"><b>Pay To :</b> {{toEmail}}</div>
+        <input [(ngModel)]="finalAmount" placeholder="Enter amount" (keypress)=_keyPressDec($event)
+            (keyup)="amountChange(finalAmount)" class="input-paynumber">
+        <table class="data-pay-table">
+            <tr>
+                <th>Transaction Fee %:</th>
+                <td>$ 3%</td>
+            </tr>
+            <tr>
+                <th>Transaction Fee:</th>
+                <td>$ {{taxamount }}</td>
+            </tr>
+            <tr>
+                <th>Payable Amount:</th>
+                <td>$ {{payableAmount }}</td>
+            </tr>
+        </table>
+        <ngx-paypal [config]="payPalConfig"></ngx-paypal>
+    </div>
+</mat-card>

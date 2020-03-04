@@ -67,6 +67,11 @@ export const rootRouterConfig: Routes = [
     data: { title: 'Our Story' }
   },
   {
+    path: 'influencers',
+    loadChildren: () => import('./influencenrs/influencers.module').then(m => m.InfluencersModule),
+    data: { title: 'Influencers' }
+  },
+  {
     path: 'blog',
     loadChildren: () => import('./blog/blog.module').then(m => m.BlogModule),
     data: { title: 'Blog' }
@@ -84,7 +89,8 @@ export const rootRouterConfig: Routes = [
       {
         path: 'influencer', loadChildren: () => import('./content/influencer/influencer.module').then(m => m.InfDashBoardModule),
         // canActivate: [OrgGuard],
-        data: { expectedOrg: 'inf' }
+        // data: { expectedOrg: 'inf' }
+        data: { title: 'Influencer' }
       },
       {
         path: 'dashboard',
@@ -205,7 +211,7 @@ export const rootRouterConfig: Routes = [
   },
   {
     path: '**',
-    redirectTo: 'login'
+    redirectTo: 'about_us'
   }
 ];
 

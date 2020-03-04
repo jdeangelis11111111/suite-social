@@ -1,10 +1,10 @@
 <div class="mobile-logo">
-  <a routerLink="/login" class="logo" *ngIf="['/about_us', '/our_story', '/blog'].includes(getRouterUrl())">
+  <a routerLink="/login" class="logo" *ngIf="['/about_us','/our_story', '/influencers', '/blog'].includes(getRouterUrl())">
     <img src="assets/image/logo01.png" alt="">
   </a>
 </div>
 <div class="navmenu">
-  <a routerLink="/login" class="logo" *ngIf="['/about_us', '/our_story', '/blog'].includes(getRouterUrl())">
+  <a routerLink="/login" class="logo" *ngIf="['/about_us', '/our_story', '/influencers','/blog'].includes(getRouterUrl())">
     <img src="assets/image/logo01.png" alt="">
   </a>
   <ul>
@@ -13,6 +13,9 @@
     </li>
     <li>
       <a routerLink="/our_story">Our story</a>
+    </li>
+    <li>
+      <a routerLink="/influencers">Influencers</a>
     </li>
     <li>
       <a routerLink="/blog">Blog</a>

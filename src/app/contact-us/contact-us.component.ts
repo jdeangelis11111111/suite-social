@@ -7,10 +7,11 @@ import { Router } from '@angular/router';
   styleUrls: ['./contact-us.component.scss']
 })
 export class ContactUsComponent implements OnInit {
-
+  mailText:string;
   constructor(private router: Router) { }
 
   ngOnInit() {
+    this.mailText = 'mailto:jdeangelis@suitesocialenterprise.com'
   }
   toLogIn() {
     this.router.navigate(['login']);

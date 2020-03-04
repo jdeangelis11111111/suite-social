@@ -6,7 +6,7 @@ import { ContentComponent } from './content/content.component';
 export const rootRouterConfig: Routes = [
   {
     path: '',
-    redirectTo: 'login',
+    redirectTo: 'about_us',
     pathMatch: 'full'
   },
   {

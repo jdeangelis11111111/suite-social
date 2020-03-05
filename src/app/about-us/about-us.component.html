@@ -1,15 +1,27 @@
 <div id="wrapper">
   <div class="banners"> 
+    <div [hidden]="!imageLoader">
+      <mat-spinner style="right: -50%;left: 38%;" color="warn"></mat-spinner>
+    </div>
+      <img [hidden]="imageLoader" src="assets/image/topbanner.webp" (load)="this.imageLoader = false;" />
+    <!-- <img src="assets/image/topbanner.webp" id="bannerlogos" alt="Image is loading..." /> -->
+      <div class="overlay" [hidden]="imageLoader">
+        <p class="color-white wellcome-font">WELCOME TO SUITESOCIAL </p>
+        <p class="color-white connecting-font">CONNECTING BRANDS & INFLUENCERS WITH ARTIFICIAL INTELLIGENCE </p>
+        <button routerLink="/contact" class="learn-more-button"> Learn More</button>
+      
+    </div>
+    <!-- <div class="bannerContent">
+      <div class="">
+        <p class="color-white2 wellcome-font">WELCOME TO SUITESOCIAL </p>
+        <p class="color-white2 connecting-font">CONNECTING BRANDS & INFLUENCERS WITH ARTIFICIAL INTELLIGENCE </p>
+        <button routerLink="/contact" class="learn-more-button"> Learn More</button>
+      </div>
+    </div>
     <div class="image-container">
       <img src="assets/image/topbanner.webp" />
-      <div class="after">
-        <div class="bannerContent">
-          <p class="color-white wellcome-font">WELCOME TO SUITESOCIAL </p>
-          <p class="color-white connecting-font">CONNECTING BRANDS & INFLUENCERS WITH ARTIFICIAL INTELLIGENCE </p>
-          <button routerLink="/contact" class="learn-more-button"> Learn More</button>
-        </div>
-      </div>
-  </div>
+      
+  </div> -->
     <br/>
     <br/>
     <p style="text-align: center; font-size: 1.2em;"><b>SEE WHAT'S IN IT FOR YOU</b></p>
